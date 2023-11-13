@@ -1,0 +1,44 @@
+{ "1":{
+    "id": "1",
+    "name": "Dr. Drake",
+    "specialty": "Surgeon",
+    "avgRating": 4.8,
+    "totalRating": 272,
+    "about": "Dr. Rodriguez earned her medical degree from the prestigious University of Medicine, where her passion for medicine and genuine concern for patients became evident. Throughout her career, she has continually pursued advanced training and stays abreast of the latest medical advancements, ensuring that her patients receive the best possible care.",
+    "photo": "https://static.vecteezy.com/system/resources/previews/002/896/807/non_2x/female-doctor-using-her-digital-tablet-free-vector.jpg",
+    "totalPatients": 500,
+    "date": "23 June, 2008",
+    "education": "PHD in Surgeon",
+    "hospital": "Kangaroo Hospital.",
+    "price": "100 Euro",
+    "short": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, alias!"
+  },
+  "2": {
+    "id": "2",
+    "name": "Dr. Krus Kir",
+    "specialty": "Neurologist",
+    "avgRating": 4.8,
+    "totalRating": 272,
+    "about": "Dr. Rodriguez earned her medical degree from the prestigious University of Medicine, where her passion for medicine and genuine concern for patients became evident. Throughout her career, she has continually pursued advanced training and stays abreast of the latest medical advancements, ensuring that her patients receive the best possible care.",
+    "photo": "https://static.vecteezy.com/system/resources/previews/002/896/807/non_2x/female-doctor-using-her-digital-tablet-free-vector.jpg",
+    "date": "23 June, 2008",
+    "totalPatients": 1500,
+    "hospital": "Flex Hospital",
+    "education": "PHD in Neurologist",
+    "short": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, alias!"
+  },
+  "3": {
+    "id": "3",
+    "name": "Dr. Uris Tar",
+    "specialty": "Gynaecology",
+    "avgRating": 4.6,
+    "totalRating": 272,
+    "about": "dsadsadsadsadsa",
+    "photo": "https://static.vecteezy.com/system/resources/previews/002/896/807/non_2x/female-doctor-using-her-digital-tablet-free-vector.jpg",
+    "totalPatients": 1000,
+    "date": "23 June, 2008",
+    "education": "PHD in Gynaecology",
+    "hospital": "Flex Hospital",
+    "short": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, alias!"
+  }
+}
