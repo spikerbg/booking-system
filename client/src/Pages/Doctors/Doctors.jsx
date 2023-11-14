@@ -56,8 +56,8 @@ const handleSearchChange = (e) => {
             className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5
           "
           >
-            {filteredDoctors.map((doctor) => (
-              <DoctorCard key={doctor.id} doctor={doctor} />
+            {filteredDoctors.map((doctor,id) => (
+              <DoctorCard key={id} doctor={doctor} doctorId={doctor.id} />
             ))}
           </div>
         </div>
