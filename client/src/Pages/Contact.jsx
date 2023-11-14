@@ -1,22 +1,41 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
+
+import React from 'react'
 import useTitle from "../Hooks/useTitle"
+import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+
+const containerStyle = {
+  width: '1200px',
+  height: '400px',
+  borderRadius: '10px',
+};
+
+const center = {
+  lat: 41.9044,
+  lng: -87.644
+};
 
 export default function Contactus() {
   useTitle("Contact")
-  return (
+
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: "AIzaSyARTWEQB04H5iRfRlgNMefvbhDsnwbqAGI"
+  })
+
+  const [map, setMap] = React.useState(null)
+
+  const onLoad = React.useCallback(function callback(map) {
+    // This is just an example of getting and using the map instance!!! don't just blindly copy!
+    const bounds = new window.google.maps.LatLngBounds(center);
+    map.fitBounds(bounds);
+
+    setMap(map)
+  }, [])
+
+  const onUnmount = React.useCallback(function callback(map) {
+    setMap(null)
+  }, [])
+  return isLoaded ?(
     <div className="relative isolate bg-white">
       <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
         <div className="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-48">
@@ -171,7 +190,17 @@ export default function Contactus() {
             </div>
           </div>
         </form>
+        <div className='rounded-lg'><GoogleMap
+        mapContainerStyle={containerStyle}
+        center={center}
+        zoom={4}
+        onLoad={onLoad}
+        onUnmount={onUnmount}
+      >
+        <></>
+      </GoogleMap>
+      </div>
       </div>
     </div>
-  )
+  ): <></>
 }
