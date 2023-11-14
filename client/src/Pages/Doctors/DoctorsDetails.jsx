@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { doctors } from "../../../data/doctors.js";
 import * as doctorService from "../../serviceR/doctorService";
 import starIcon from "../../assets/images/Star.png";
 import DoctorAbout from "./DoctorAbout.jsx";
@@ -8,9 +7,9 @@ import Feedback from "./Feedback.jsx";
 import SidePanel from "./SidePanel.jsx";
 
 const DoctorsDetails = ({}) => {
-  const { id } = useParams();
   const [doctor, setDoctor] = useState(null);
   const [tab, setTab] = useState("about");
+  const { id } = useParams();
 
   useEffect(() => {
     async function fetchDoctor() {
@@ -95,7 +94,7 @@ const DoctorsDetails = ({}) => {
             <div className="mt-[50px]">
               {tab === "about" && <DoctorAbout doctor={doctor} />}
 
-              {tab === "feedback" && <Feedback doctor={doctor} />}
+              {tab === "feedback" && <Feedback doctor={doctor} doctorId={id} />}
             </div>
           </div>
           <SidePanel />
