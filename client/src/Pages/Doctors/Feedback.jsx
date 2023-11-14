@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import FeedBackForm from "./FeedBackForm.jsx";
 import * as reviewsService from "../../serviceR/reviewsService.js";
 import { formatDate } from "../../utils/dataUtils.js";
+import { AiFillStar } from "react-icons/ai";
 
 const Feedback = ({ doctor }) => {
   const [feedbackForm, setFeedbackForm] = useState(false);
@@ -48,11 +49,11 @@ const Feedback = ({ doctor }) => {
             </div>
           </div>
           <div className="flex gap-1">
-            {/* {[...Array(items.rating).keys()].map((_, index) => (
-              <AiFillStar key={index} color="#0067FF" />
-            ))} */}
-            ({items.rating})
-          </div>
+  {[...Array(Number(items.rating)).keys()].map((_, index) => (
+    <AiFillStar key={index + 1} color="#0067FF" />
+  ))}
+  ({items.rating})
+</div>
         </div>
       ))}
       {feedbackForm && <FeedBackForm  doctor={doctor} doctorId={id}/>}
