@@ -22,7 +22,6 @@ const FeedBackForm = ({ doctor }) => {
   reviewtext: formData.get('reviewtext')
 
 });
-  console.log(newComment)
 
 
  // Add the newly created review to the local state

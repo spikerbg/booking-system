@@ -1,44 +1,58 @@
-{ "1":{
-  "id": "1",
-  "name": "Dr. Drake",
-  "specialty": "Surgeon",
-  "avgRating": 4.8,
-  "totalRating": 272,
-  "about": "Dr. Rodriguez earned her medical degree from the prestigious University of Medicine, where her passion for medicine and genuine concern for patients became evident. Throughout her career, she has continually pursued advanced training and stays abreast of the latest medical advancements, ensuring that her patients receive the best possible care.",
-  "photo": "https://static.vecteezy.com/system/resources/previews/002/896/807/non_2x/female-doctor-using-her-digital-tablet-free-vector.jpg",
-  "totalPatients": 500,
-  "date": "23 June, 2008",
-  "education": "PHD in Surgeon",
-  "hospital": "Kangaroo Hospital.",
-  "price": "100 Euro",
-  "short": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, alias!"
-},
-"2": {
-  "id": "2",
-  "name": "Dr. Krus Kir",
-  "specialty": "Neurologist",
-  "avgRating": 4.8,
-  "totalRating": 272,
-  "about": "Dr. Rodriguez earned her medical degree from the prestigious University of Medicine, where her passion for medicine and genuine concern for patients became evident. Throughout her career, she has continually pursued advanced training and stays abreast of the latest medical advancements, ensuring that her patients receive the best possible care.",
-  "photo": "https://static.vecteezy.com/system/resources/previews/002/896/807/non_2x/female-doctor-using-her-digital-tablet-free-vector.jpg",
-  "date": "23 June, 2008",
-  "totalPatients": 1500,
-  "hospital": "Flex Hospital",
-  "education": "PHD in Neurologist",
-  "short": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, alias!"
-},
-"3": {
-  "id": "3",
-  "name": "Dr. Uris Tar",
-  "specialty": "Gynaecology",
-  "avgRating": 4.6,
-  "totalRating": 272,
-  "about": "dsadsadsadsadsa",
-  "photo": "https://static.vecteezy.com/system/resources/previews/002/896/807/non_2x/female-doctor-using-her-digital-tablet-free-vector.jpg",
-  "totalPatients": 1000,
-  "date": "23 June, 2008",
-  "education": "PHD in Gynaecology",
-  "hospital": "Flex Hospital",
-  "short": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, alias!"
-}
+{ 
+  "1":{
+    "id": "1",
+    "name": "John",
+    "date": "11/14/2023",
+    "photo": "patients",
+    "doctorId": "1",
+    "review": "Excellent experience, would visit again",
+    "rating": "5"
+  },
+  "10":{
+    "id": "10",
+    "name": "fdsfdsfsfdsfds",
+    "date": "11/14/2023",
+    "doctorId": "2",
+    "photo": "patients",
+    "review": "Excellent experience, would visit again",
+    "rating": "5"
+  },
+  
+  
+  "2":{
+    "id": "2",
+    "name": "Jane",
+    "doctorId": "2",
+    "date": "11/14/2023",
+    "photo": "patients",
+    "review": "The service was top-notch, highly recommended",
+    "rating": "5"
+  },
+  "3":{
+    "id": "3",
+    "name": "Sam",
+    "doctorId": "3",
+    "date": "11/14/2023",
+    "photo": "patients",
+    "review": "Great doctor, very professional",
+    "rating": "4"
+  },
+  "4":{
+    "id": "4",
+    "name": "Alice",
+    "doctorId": "1",
+    "date": "11/14/2023",
+    "photo": "patients",
+    "review": "Satisfactory experience, would come back",
+    "rating": "3"
+  },
+  "5":{
+    "id": "5",
+    "name": "Alice",
+    "doctorId": "1",
+    "date": "11/14/2023",
+    "photo": "patients",
+    "review": "dsadsadsa Satisfactory experience, would come back",
+    "rating": "3"
+  }
 }

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 // import Reviews from "./Reviews.jsx";
 import FeedBackForm from "./FeedBackForm.jsx";
 import * as reviewsService from "../../serviceR/reviewsService.js";
+import { formatDate } from "../../utils/dataUtils.js";
 
 const Feedback = ({ doctor }) => {
   const [feedbackForm, setFeedbackForm] = useState(false);
@@ -42,7 +43,7 @@ const Feedback = ({ doctor }) => {
                 {items.username}
               </h5>
               <p>{items.reviewtext}</p>
-              <p className="text-[14px] leading-6 text-textColor">{items.date}</p>
+              <p className="text-[14px] leading-6 text-textColor">{formatDate(items.date)}</p>
               <p className="text_para mt-3 font-medium text-[15px]">
                 {items.reviews}
               </p>
