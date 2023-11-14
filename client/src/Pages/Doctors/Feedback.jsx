@@ -1,7 +1,5 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-// import { reviews } from "../../../data/reviews.js";
-// import Reviews from "./Reviews.jsx";
 import FeedBackForm from "./FeedBackForm.jsx";
 import * as reviewsService from "../../serviceR/reviewsService.js";
 import { formatDate } from "../../utils/dataUtils.js";

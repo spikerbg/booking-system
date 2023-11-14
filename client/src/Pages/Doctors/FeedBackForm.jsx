@@ -4,10 +4,10 @@ import * as reviewsService from "../../serviceR/reviewsService.js";
 import * as doctorService from "../../serviceR/doctorService.js";
 
 const FeedBackForm = ({ doctor }) => {
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState([]);
   const [hover, sethover] = useState(0);
   const [reviewtext, setReviewText] = useState("");
-  const [newReview, setNewReview] = useState([])
+  const [newReview, setNewReview] = useState(0)
   const { id, name, username,doctorId /* other properties */ } = doctor;
   const handleSubmitReview = async (e) => {
     e.preventDefault();
@@ -18,14 +18,16 @@ const FeedBackForm = ({ doctor }) => {
   id: formData.get('id'),
   doctorId: formData.get('doctorId'),
   username: formData.get('username'),
-  rating: formData.get('rating', String(rating)),
+  rating: formData.get('rating'),
   reviewtext: formData.get('reviewtext')
 
 });
+  console.log(newComment)
 
 
  // Add the newly created review to the local state
- setNewReview((state) => [...state, newReview]);
+
+ 
 
   };
   return (
@@ -40,7 +42,7 @@ const FeedBackForm = ({ doctor }) => {
           return (
             <button
               key={index}
-              value={rating}
+              value={index}
               type="button"
               name="rating"
               className={`${
@@ -49,12 +51,13 @@ const FeedBackForm = ({ doctor }) => {
                   : "text-gray-400"
               } bg-transparent border-none outline-none text-[22px] cursor-pointer`}
               onClick={() => setRating(index)}
-              onMouseLeave={() => sethover(rating)}
+              onMouseLeave={() => sethover(index)}
               onMouseEnter={() => sethover(index)}
               onDoubleClick={() => {
                 sethover(0);
                 setRating(0);
               }}
+              
             >
               <span>
                 <AiFillStar />
@@ -66,6 +69,7 @@ const FeedBackForm = ({ doctor }) => {
       <div className="mb-6">
       <input type="hidden" name="id" value={id} />
 <input type="hidden" name="doctorId" value={doctor.id} />
+<input type="hidden" name="rating" value={rating} />
       <h3 className="text-headingColor text-[16px] leading-6 font-semibold mb-4">
           User Name
         </h3>
