@@ -8,7 +8,7 @@ import { AiFillStar } from "react-icons/ai";
 const Feedback = ({ doctor }) => {
   const [feedbackForm, setFeedbackForm] = useState(false);
   const [reviews, setReviews] = useState([]);
-  const { id, totalRating } = doctor;
+  const { id,doctorId, totalRating } = doctor;
 
   useEffect(() => {
     // Fetch reviews for the specific doctor

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import * as doctorService from "../../serviceR/doctorService";
+import * as reviewsService from "../../serviceR/reviewsService.js";
 import starIcon from "../../assets/images/Star.png";
 import DoctorAbout from "./DoctorAbout.jsx";
 import Feedback from "./Feedback.jsx";
@@ -24,6 +25,7 @@ const DoctorsDetails = ({}) => {
 
     fetchDoctor();
   }, [id]);
+  
 
   if (!doctor) {
     return <div>Loading...</div>; // Return a loading indicator if data is not yet available
@@ -37,6 +39,7 @@ const DoctorsDetails = ({}) => {
     photo,
     short,
   } = doctor;
+  
 
   return (
     <section>
@@ -60,10 +63,10 @@ const DoctorsDetails = ({}) => {
                 </h3>
                 <div className="flex items-center gap-[6px]">
                   <span className="flex items-center gap-[6px] text-[14px] leading-5 lg:text-[16px] lg:leading-7 font-semibold text-headingColor">
-                    <img src={starIcon} alt="star" /> {avgRating}
+                    <img src={starIcon} alt="star" /> {doctor.averageRating}
                   </span>
                   <span className="text-[14px] leading-5 lg:text-[16px] lg:leading-7 font-semibold text-headingColor">
-                    ({totalRating})
+                    ({doctor.totalRating})
                   </span>
                 </div>
                 <p className="text_para text-[14px] leading-5 md:text-[15px] lg:max-w-[390px]">

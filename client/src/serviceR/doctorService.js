@@ -1,4 +1,5 @@
 const baseUrl = 'http://localhost:3030/jsonstore/doctors';
+import * as reviewsService from "./reviewsService";
 
 export const getAll = async () => {
     const response = await fetch(baseUrl);
@@ -12,6 +13,24 @@ export const getAll = async () => {
 export const getOne = async (userId) => {
     const response = await fetch(`${baseUrl}/${userId}`);
     const result = await response.json();
+    // Fetch reviews for the specific doctor
+    const reviews = await reviewsService.getAll(userId);
+
+    // Calculate average and total rating
+    const averageRating =
+    reviews.reduce((sum, review) => sum + parseInt(review.rating, 0) ,0) / reviews.length;
+
+    const totalRating = reviews.reduce((sum, review) => sum + parseInt(review.rating, 10), 0);
+
+
+    // Include averageRating and totalRating in the result
+    const doctorWithRating = {
+      ...result,
+      averageRating,
+      totalRating,
+    };
+
+    return doctorWithRating;
 
     return result;
 };

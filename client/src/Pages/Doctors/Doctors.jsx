@@ -1,7 +1,7 @@
 import Testimonial from "../../Components/Testimonial/Testimonial";
-import { doctors } from ".././../../data/doctors.js";
 import DoctorCard from "./DoctorCard";
 import * as doctorService from "../../serviceR/doctorService";
+
 import { useState, useEffect } from "react";
 const Doctors = () => {
  const [doctors, setDoctors] = useState([])

@@ -1,10 +1,14 @@
 const baseUrl = 'http://localhost:3030/jsonstore/reviews';
 
-export const getAll = async () => {
-    const response = await fetch(baseUrl);
-    const result = await response.json();
+export const getAll = async (doctorId) => {
+    const query = new URLSearchParams({
+        where: `doctorId="${doctorId}"`
+    });
 
-    const data = Object.values(result).filter(items => items.userId)
+    const response = await fetch(baseUrl);
+    const result = await response.json()
+
+    const data = Object.values(result).filter(items => items.doctorId === doctorId);
 
     return data;
 };
@@ -19,15 +23,18 @@ export const getOne = async (userId) => {
 export const create = async (data) => {
     const body = {
         rating: data.rating,
+        doctorId: data.doctorId,
+        id: data.id,
         text: data.text,
         review: data.review,
+        username: data.username,
         photo: data.photo,
-        rating: data.rating,
         reviewtext: data.reviewtext,
         date: new Date().toISOString(),
     };
 
     const response = await fetch(baseUrl, {
+
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

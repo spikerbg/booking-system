@@ -1,4 +1,4 @@
-// import { doctors } from "../../../data/doctors.js";
+
 import { useState, useEffect } from "react";
 import DoctorCard from "./DoctorCard.jsx";
 import * as doctorService from "../../serviceR/doctorService.js";

@@ -11,6 +11,7 @@ const DoctorCard = ({ doctor }) => {
     specialty,
     avgRating,
     totalRating,
+    averageRating,
     photo,
     totalPatients,
     hospital,
