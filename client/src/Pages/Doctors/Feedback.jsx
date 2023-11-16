@@ -18,6 +18,28 @@ const Feedback = ({ doctor }) => {
       })
       .catch((err) => console.log(err));
   }, [id]);
+ 
+  const handleSubmitReview = async (formData) => {
+    try {
+      // Create new review
+      const newComment = await reviewsService.create({
+        id: formData.get("id"),
+        doctorId: formData.get("doctorId"),
+        username: formData.get("username"),
+        rating: formData.get("rating"),
+        reviewtext: formData.get("reviewtext"),
+      });
+  
+      // Add the newly created review to the local state
+      setReviews((prevReviews) => [...prevReviews, newComment]);
+      
+      // Close the feedback form
+      setFeedbackForm(false);
+    } catch (error) {
+      console.error("Error submitting review:", error);
+    }
+  };
+
 
 
   return (
@@ -56,7 +78,7 @@ const Feedback = ({ doctor }) => {
 </div>
         </div>
       ))}
-      {feedbackForm && <FeedBackForm  doctor={doctor} doctorId={id}/>}
+      {feedbackForm && <FeedBackForm doctor={doctor} doctorId={id} onSubmit={handleSubmitReview} />}
       <div>
       {!feedbackForm && (
         <div className="text-center">

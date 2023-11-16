@@ -1,37 +1,23 @@
 import { useState } from "react";
 import { AiFillStar } from "react-icons/ai";
-import * as reviewsService from "../../serviceR/reviewsService.js";
-import * as doctorService from "../../serviceR/doctorService.js";
 
-const FeedBackForm = ({ doctor }) => {
+
+const FeedBackForm = ({ doctor, onSubmit  }) => {
   const [rating, setRating] = useState([]);
   const [hover, sethover] = useState(0);
   const [reviewtext, setReviewText] = useState("");
-  const [newReview, setNewReview] = useState(0)
   const { id, name, username,doctorId /* other properties */ } = doctor;
-  const handleSubmitReview = async (e) => {
+  const handleSubmitForm = async (e) => {
     e.preventDefault();
- // Create new FormData object
-
- const formData = new FormData(e.currentTarget)
- const newComment = await reviewsService.create({
-  id: formData.get('id'),
-  doctorId: formData.get('doctorId'),
-  username: formData.get('username'),
-  rating: formData.get('rating'),
-  reviewtext: formData.get('reviewtext')
-
-});
-  console.log(newComment)
-
-
- // Add the newly created review to the local state
-
- 
-
-  };
+  
+    // Create new FormData object
+    const formData = new FormData(e.currentTarget);
+  
+    // Call the onSubmit prop with formData
+    onSubmit(formData);
+  };;
   return (
-    <form onSubmit={handleSubmitReview}>
+    <form onSubmit={handleSubmitForm}>
       <h3 className="text-headingColor text-[16px] leading-6 font-semibold mb-4">
         How would you rate the overall experience ?*
       </h3>
