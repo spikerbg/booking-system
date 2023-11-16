@@ -175,7 +175,7 @@ const Home = () => {
       </section>
 
       {/* Feature Content */}
-      <section>
+      <section className="bgcolr">
         <div className="container">
           <div className="flex items-center justify-between flex-col lg:flex-row">
             <div className="xl:w-[680px]">
@@ -203,7 +203,7 @@ const Home = () => {
 
             <div className="relative z-10 xl:w-[770px] flex justify-end mt-[50px] lg:mt-0">
               <img src={featureImg} className="w-3/4 rounded-lg" alt="" />
-              <div className="w-[150px] lg:w-[248px] bg-white absolute bottom-[50px] left-0 md:bottom-[100px] md:left z-20 p-2 pb-3 lg:pt-4 lg:px-4 lg:pb-[26px] rounded-[10px]">
+              <div className="drop-shadow-lg w-[150px] lg:w-[248px] bg-white absolute bottom-[50px] left-0 md:bottom-[100px] md:left z-20 p-2 pb-3 lg:pt-4 lg:px-4 lg:pb-[26px] rounded-[10px]">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-[6px] lg:gap-3">
                     <p className="text-[10px] leading-[10px] lg:text-[14px] lg:leading-5 text-headingColor font-[600]">
