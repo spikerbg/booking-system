@@ -6,6 +6,7 @@ import starIcon from "../../assets/images/Star.png";
 import DoctorAbout from "./DoctorAbout.jsx";
 import Feedback from "./Feedback.jsx";
 import SidePanel from "./SidePanel.jsx";
+import { BookContext } from '../../Context/BookContext';
 
 const DoctorsDetails = ({}) => {
   const [doctor, setDoctor] = useState(null);
@@ -100,7 +101,9 @@ const DoctorsDetails = ({}) => {
               {tab === "feedback" && <Feedback doctor={doctor} doctorId={id} />}
             </div>
           </div>
+          <BookContext.Provider value={id}>
           <SidePanel />
+          </BookContext.Provider>
         </div>
       </div>
     </section>

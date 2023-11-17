@@ -32,7 +32,6 @@ export const getOne = async (userId) => {
 
     return doctorWithRating;
 
-    return result;
 };
 
 export const create = async (data) => {

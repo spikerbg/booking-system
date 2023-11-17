@@ -1,8 +1,10 @@
-import { doc, getDoc } from "firebase/firestore";
+
 import { useState, useEffect } from "react";
 import React from "react"; // Fix the import statement for React
-import { db } from '../firebase';
-import { formatDate } from "../utils/dataUtils";
+
+import styles from "../Pages/dashboard.module.css"
+
+
 
 import * as userService from "../serviceR/userService";
 
@@ -66,28 +68,28 @@ export default function Dashboard({ userId,
 
 
   return (
-    <div className="home-container">
-      <div className="home-container1">
+    <div className={styles['home-container']}>
+      <div className={styles['home-container1']}>
         <img
           src="https://play.teleporthq.io/static/svg/default-img.svg"
           alt="image"
           className="home-image"
         />
-        <div className="home-container2">
+        <div className={styles['home-container2']}>
           <h1>{user.fullname}</h1>
           <h1>{user.role}</h1>
         </div>
-        <div className="home-container3">
-          <button type="button" className="btndb">
+        <div className={styles['home-container3']}>
+          <button type="button" className={styles['btndbred']}>
             Delete profile
           </button>
-          <button type="button" className="btndb">
+          <button type="button" className={styles['btndb']}>
             Edit profile
           </button>
         </div>
       </div>
-      <div className="home-container4">
-        <div className="home-container5">
+      <div className={styles['home-container4']}>
+        <div className={styles['home-container5']}>
           <h1>Info for patient</h1>
 
           <span>{user.fullname}</span>
@@ -102,7 +104,7 @@ export default function Dashboard({ userId,
 
 
         </div>
-        <div className="home-container6">
+        <div className={styles['home-container6']}>
           <h2>Booking</h2>
           <span></span>
           <span>{user.firstName}</span>

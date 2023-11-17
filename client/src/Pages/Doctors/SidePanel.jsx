@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext  } from "react";
 import Calendar from "@demark-pro/react-booking-calendar";
+import { BookContext} from "../../Context/BookContext"
+
 
 const reserved = [
   {
@@ -12,7 +14,7 @@ const reserved = [
 
 const SidePanel = () => {
 
-
+  const doctorId = useContext(BookContext);
     const [selectedDates, setSelectedDates] = useState([]);
     const handleChange = async (e) => {
       setSelectedDates(e);
@@ -20,6 +22,7 @@ const SidePanel = () => {
       // Assuming you want to send the selected dates in the request body
       const data = {
         selectedDates: e,
+        doctorId,
       };
     
 
@@ -46,7 +49,7 @@ const SidePanel = () => {
       </div>
       <div className="mt-[30px]">
         <p className="text_para mt-0 font-semibold text-headingColor">
-          Available Time Slots:
+          Available Time Slots:{doctorId}
         </p>
         <ul className="mt-3">
           <li className="flex items-center justify-between mb-2">
@@ -77,6 +80,7 @@ const SidePanel = () => {
             <p className="text-[15px] leading-6 text-textColor font-semibold">
               Wednesday
             </p>
+            
             <p className="text-[15px] leading-6 text-textColor font-semibold">
               4:00 PM - 9:30 PM
             </p>
