@@ -1,3 +1,5 @@
+import styles from "../Pages/createdoctor.module.css"
+
 const CreateDoctorModal = ({
     onClose,
     onCreate,
@@ -10,7 +12,7 @@ const CreateDoctorModal = ({
             <div className="backdrop" onClick={onClose}></div>
                 {/* <div className="user-container"> */}
                     <header className="headers">
-                        <h2 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">Add Doctor</h2>
+                        <h2 className={styles['h2stile']}>Add Doctor</h2>
                         <button className="x" onClick={onClose}>
                             
                             ❌
@@ -61,8 +63,8 @@ const CreateDoctorModal = ({
                     <div><input type="hidden" id="totalRating" name="totalRating" value="0"></input></div>
                     
                         <div id="form-actions">
-                            <button id="action-save" className="px-5 py-2.5 text-sm my-10 mr-2 font-medium text-white bg-green-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="submit">Save</button>
-                            <button id="action-cancel" className="px-5 py-2.5 text-sm my-10 mr-2 font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" onClick={onClose}>
+                            <button id="action-save" className={styles['btnsave']}>Save</button>
+                            <button id="action-cancel" className={styles['btncencel']} type="button" onClick={onClose}>
                                 Cancel
                             </button>
                         </div>

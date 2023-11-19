@@ -6,7 +6,7 @@ import * as userService from "../serviceR/userService";
 import CreateDoctorModal from "./CreateDoctorModal"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import styles from "../Pages/dashboard.module.css"
+import styles from "../Pages/dashboarddoctor.module.css"
 import * as bookingService from "../serviceR/bookingService"
 
 

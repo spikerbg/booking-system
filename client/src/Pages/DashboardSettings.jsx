@@ -1,7 +1,5 @@
-import { doc, getDoc } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import React from "react"; // Fix the import statement for React
-import { db } from '../firebase';
 
 import * as userService from "../serviceR/userService";
 import Dashboard from "./Dashboard";
