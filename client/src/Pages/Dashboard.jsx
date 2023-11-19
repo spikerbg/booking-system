@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import React from "react"; // Fix the import statement for React
 
-import styles from "../Pages/dashboard.module.css"
+import styles from "../Components/style/dashboard.module.css"
 
 
 

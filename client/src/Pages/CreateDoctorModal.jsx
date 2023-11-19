@@ -1,4 +1,4 @@
-import styles from "../Pages/createdoctor.module.css"
+import styles from "../Components/style/createdoctor.module.css"
 
 const CreateDoctorModal = ({
     onClose,
