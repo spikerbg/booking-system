@@ -1,0 +1,12 @@
+.maindiv {
+    margin-top: 0.5rem; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  @media (min-width: 1024px) {
+    .maindiv {
+      margin-top: 1rem; 
+    }
+  }

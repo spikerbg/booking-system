@@ -9,7 +9,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import styles from "../Components/style/dashboarddoctor.module.css"
 import * as bookingService from "../serviceR/bookingService"
 
-
 export default function DashboardDoctor() {
 
   const [users, setUsers] = useState([]);

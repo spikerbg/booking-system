@@ -2,6 +2,8 @@
 import { Link } from "react-router-dom";
 import starIcon from "../../assets/images/Star.png";
 import { BsArrowRight } from "react-icons/bs";
+import styles from '../../Components/style/doctorcart.module.css'
+
 // eslint-disable-next-line react/prop-types
 const DoctorCard = ({ doctor }) => {
   const {
@@ -25,7 +27,7 @@ const DoctorCard = ({ doctor }) => {
         {name}
       </h2>
 
-      <div className="mt-2 lg:mt-4 flex items-center justify-between">
+      <div className={styles['maindiv']}>
         <span className="bg-[#CCF0F3] text-irisBlueColor text-[12px] lg:text-[16px] py-1 px-2 font-semibold rounded">
           {specialty}
         </span>

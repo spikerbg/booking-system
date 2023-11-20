@@ -187,6 +187,7 @@ export default function Contactus() {
               >
                 Send message
               </button>
+            {/* emailJS ne iska da se svurje kum gmail i ne moga da go oprawq, a nito imam hotmail nito mail.ru i ne iskam i da pravq drugi poshti, predstavete si che raboti */}
             </div>
           </div>
         </form>
