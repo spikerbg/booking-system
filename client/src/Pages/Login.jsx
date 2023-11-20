@@ -4,6 +4,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import React from "react";
+import styles from '../Components/style/login.module.css'
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -29,7 +30,7 @@ const Login = () => {
   };
   
   return (
-    <section className="px-5 lg:px-0">
+    <section className={styles['mainselection']}>
       <div className="w-full max-w-[570px] mx-auto rounded-lg shadow-md p-5 md:p-10">
         <h3 className="text-headingColor text-[22px] leading-9 font-bold mb-10">
           Hello! <span className="text-primaryColor">Welcome</span> Back 🎉

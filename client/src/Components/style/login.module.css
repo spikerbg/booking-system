@@ -1,0 +1,11 @@
+.mainselection {
+    padding-left: 1.25rem; 
+    padding-right: 1.25rem; 
+  }
+  
+  @media (min-width: 1024px) {
+    .my-mainselection {
+      padding-left: 0; 
+      padding-right: 0; 
+    }
+  }

@@ -1,0 +1,5 @@
+.picture {
+    width: 200px;
+    height: 200px;
+    border-radius: 0.25rem; /* Assuming the default base border-radius in Tailwind is 0.25rem */
+  }

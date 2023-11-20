@@ -1,6 +1,7 @@
 import { services } from "../../data/services.js";
 import useTitle from "../Hooks/useTitle.js";
 import ServicesCard from "../Services/ServicesCard.jsx";
+import styles from '../Components/style/services.module.css'
 
 
 export default function Services(props){
@@ -25,7 +26,7 @@ export default function Services(props){
           <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
             {services.map((services) => (
               <div key={services.name} className="relative pl-16">
-                <dt className="text-base font-semibold leading-7 text-gray-900">
+                <dt className={styles['dtstyle']}>
                   <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-white">
                   <img className="w-full" src={services.icon} alt="" />
                   </div>

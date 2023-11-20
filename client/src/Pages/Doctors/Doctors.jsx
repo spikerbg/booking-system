@@ -1,6 +1,7 @@
 import Testimonial from "../../Components/Testimonial/Testimonial";
 import DoctorCard from "./DoctorCard";
 import * as doctorService from "../../serviceR/doctorService";
+import styles from '../../Components/style/doctor.module.css'
 
 import { useState, useEffect } from "react";
 const Doctors = () => {
@@ -53,8 +54,7 @@ const handleSearchChange = (e) => {
       <section>
         <div className="container">
           <div
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5
-          "
+            className={styles['mainselection']}
           >
             {filteredDoctors.map((doctor,id) => (
               <DoctorCard key={id} doctor={doctor} doctorId={doctor.id} />

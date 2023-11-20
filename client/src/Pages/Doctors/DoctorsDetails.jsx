@@ -6,6 +6,7 @@ import DoctorAbout from "./DoctorAbout.jsx";
 import Feedback from "./Feedback.jsx";
 import SidePanel from "./SidePanel.jsx";
 import { BookContext } from '../../Context/BookContext';
+import styles from '../../Components/style/doctordetails.module.css'
 
 const DoctorsDetails = ({}) => {
   const [doctor, setDoctor] = useState(null);
@@ -50,7 +51,7 @@ const DoctorsDetails = ({}) => {
                 <img
                   src={photo}
                   alt={name}
-                  className="w-[200px] h-[200px] rounded"
+                  className={styles['picture']}
                 />
               </figure>
               <div>

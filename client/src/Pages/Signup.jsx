@@ -4,6 +4,7 @@ import avatar from "../assets/images/patient-avatar.png";
 import { useState, useEffect } from "react";
 import * as userService from "../serviceR/userService.js";
 import { ToastContainer, toast } from 'react-toastify';
+import styles from '../Components/style/Signup.module.css'
 // import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -92,7 +93,7 @@ const renderDoctorFields = () => {
           </div>
 
           {/* Sign up form  */}
-          <div className="rounded-l-lg lg:pl-16 py-10">
+          <div className={styles['maindiv']}>
             <h3 className="text-headingColor text-[22px] leading-9 font-bold mb-10">
               Create a <span className={"text-primaryColor"}>account</span>
             </h3>

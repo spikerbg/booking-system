@@ -1,0 +1,20 @@
+.mainul{
+    display: flex;
+flex-direction: column; 
+gap: 0; 
+margin-bottom: 1.875rem; 
+}
+
+@media (min-width: 640px) {
+.mainul {
+  flex-direction: row; 
+  justify-content: space-between; 
+  align-items: flex-end; 
+}
+}
+
+@media (min-width: 768px) {
+.mainul {
+  gap: 1.25rem; 
+}
+}

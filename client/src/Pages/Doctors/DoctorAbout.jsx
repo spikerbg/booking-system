@@ -1,3 +1,5 @@
+import styles from '../../Components/style/doctorabout.module.css'
+
 const DoctorAbout = ({ doctor }) => {
   return (
     <div>
@@ -19,7 +21,7 @@ const DoctorAbout = ({ doctor }) => {
         </h3>
 
         <ul className="pt-4 md:p-5">
-          <li className="flex flex-col  sm:flex-row sm:justify-between sm;items-end md:gap-5 mb-[30px]">
+          <li className={styles['mainul']}>
             <div>
               <span className="text-irisBlueColor text-[15px] leading-6 font-semibold">
                 {doctor.name}
