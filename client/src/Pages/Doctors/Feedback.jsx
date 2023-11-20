@@ -4,6 +4,7 @@ import FeedBackForm from "./FeedBackForm.jsx";
 import * as reviewsService from "../../serviceR/reviewsService.js";
 import { formatDate } from "../../utils/dataUtils.js";
 import { AiFillStar } from "react-icons/ai";
+import styles from "../../Components/style/feedback.module.css"
 
 const Feedback = ({ doctor }) => {
   const [feedbackForm, setFeedbackForm] = useState(false);
@@ -51,7 +52,7 @@ const Feedback = ({ doctor }) => {
     </div>
     
       {reviews.map((items) => (
-        <div key={items.id} className="flex justify-between gap-10 mb-[30px]">
+        <div key={items.id} className={styles['maindiv']}>
           <div className="flex gap-3">
             <figure className="w-10 h-10 rounded-full">
               <img className="w-full" src={items.photo} alt="" />

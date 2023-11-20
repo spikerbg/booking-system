@@ -1,6 +1,7 @@
 import aboutImg from "../assets/images/11-1024x1024.png";
 import aboutCardImg from "../assets/images/about-card.png";
 import { Link } from "react-router-dom";
+import styles from "../Components/style/about.module.css"
 const About = () => {
   return (
     <section>
@@ -27,7 +28,7 @@ const About = () => {
               laborum.
             </p>
             <Link to="/">
-              <button className="btn">Learn More</button>
+              <button className={styles['btn']}>Learn More</button>
             </Link>
           </div>
         </div>

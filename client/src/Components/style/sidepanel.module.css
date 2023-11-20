@@ -1,0 +1,13 @@
+.ptag {
+    font-size: 0.9375rem; 
+    line-height: 1.5; 
+    color: #333333; 
+    font-weight: 600; 
+  }
+
+  .litag {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+    margin-bottom: 0.5rem; 
+  }

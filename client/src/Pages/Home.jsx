@@ -6,6 +6,7 @@ import icon01 from "../assets/images/icon01.png";
 import icon02 from "../assets/images/icon02.png";
 import icon03 from "../assets/images/icon03.png";
 import { BsArrowRight } from "react-icons/bs";
+import styles from "../Components/style/home.module.css"
 import About from "../About/About";
 import ServicesList from "../Services/ServicesList";
 import featureImg from "../assets/images/feature-img.png";
@@ -36,7 +37,7 @@ const Home = () => {
                   ultricies facilisis. Etiam ut velit dolor. Quisque lobortis
                   nisl a vestibulum aliquet.
                 </p>
-                <Link to="/doctors"><button className="btn">Request an Appointment
+                <Link to="/doctors"><button className={styles['btn']}>Request an Appointment
               </button></Link>
               </div>
               <div className="mt-[30px] lg:mt-[70px] flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-[30px]">
@@ -195,7 +196,7 @@ const Home = () => {
                 </li>
               </ul>
               <Link to="/">
-                <button className="btn">Learn More</button>
+                <button className={styles['btn']}>Learn More</button>
               </Link>
             </div>
 

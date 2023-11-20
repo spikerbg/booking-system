@@ -9,6 +9,7 @@ import AdminDashboard from "./AdminDashboard";
 import CreateUserModal from "./CreateUserModal";
 import UserDeleteModal from "./UserDeleteModal";
 import { ToastContainer,toast } from 'react-toastify';
+import styles from "../Components/style/admindash.module.css"
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function AdminDashboardSet(){
@@ -150,19 +151,19 @@ export default function AdminDashboardSet(){
                     <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
                         Full name
                       </th>
-                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                    <th scope="col" className={styles['tabler']}>
                         Image
                       </th>
-                      <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                      <th scope="col" className={styles['tabler']}>
                         Email
                       </th>
-                      <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                      <th scope="col" className={styles['tabler']}>
                         Role
                       </th>
-                      <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                      <th scope="col" className={styles['tabler']}>
                         Gender
                       </th>
-                      <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                      <th scope="col" className={styles['tabler']}>
                         Create At
                       </th>
                       <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">

@@ -1,7 +1,7 @@
-
 import React from 'react'
 import useTitle from "../Hooks/useTitle"
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import styles from "../Components/style/contact.module.css"
 
 const containerStyle = {
   width: '1200px',
@@ -183,14 +183,14 @@ export default function Contactus() {
             <div className="mt-8 flex justify-end">
               <button
                 type="submit"
-                className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className={styles['btn']}
               >
                 Send message
               </button>
             </div>
           </div>
         </form>
-        <div className='rounded-lg'><GoogleMap
+        <div className={styles['rounded-lg']}><GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
         zoom={4}

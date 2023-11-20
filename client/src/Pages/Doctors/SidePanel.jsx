@@ -1,6 +1,7 @@
 import React, { useState, useContext  } from "react";
 import Calendar from "@demark-pro/react-booking-calendar";
 import { BookContext} from "../../Context/BookContext"
+import styles from "../../Components/style/sidepanel.module.css"
 
 
 const reserved = [
@@ -52,36 +53,36 @@ const SidePanel = () => {
           Available Time Slots:{doctorId}
         </p>
         <ul className="mt-3">
-          <li className="flex items-center justify-between mb-2">
-            <p className="text-[15px] leading-6 text-textColor font-semibold">
+          <li className={styles['litag']}>
+            <p className={styles['ptag']}>
               Sunday
             </p>
-            <p className="text-[15px] leading-6 text-textColor font-semibold">
+            <p className={styles['ptag']}>
               4:00 PM - 9:30 PM
             </p>
           </li>
-          <li className="flex items-center justify-between mb-2">
-            <p className="text-[15px] leading-6 text-textColor font-semibold">
+          <li className={styles['litag']}>
+            <p className={styles['ptag']}>
               Monday
             </p>
-            <p className="text-[15px] leading-6 text-textColor font-semibold">
+            <p className={styles['ptag']}>
               4:00 PM - 9:30 PM
             </p>
           </li>
-          <li className="flex items-center justify-between mb-2">
-            <p className="text-[15px] leading-6 text-textColor font-semibold">
+          <li className={styles['litag']}>
+            <p className={styles['ptag']}>
               Tuesday
             </p>
-            <p className="text-[15px] leading-6 text-textColor font-semibold">
+            <p className={styles['ptag']}>
               4:00 PM - 9:30 PM
             </p>
           </li>
-          <li className="flex items-center justify-between mb-2">
-            <p className="text-[15px] leading-6 text-textColor font-semibold">
+          <li className={styles['litag']}>
+            <p className={styles['ptag']}>
               Wednesday
             </p>
             
-            <p className="text-[15px] leading-6 text-textColor font-semibold">
+            <p className={styles['ptag']}>
               4:00 PM - 9:30 PM
             </p>
           </li>
