@@ -25,10 +25,14 @@ const Layout = () => {
       setAuth(result);
       navigate('/')
   }
+  const logoutHandler = () =>{
+    setAuth({})
+}
 
     const values={
         loginSubmitHandler,
         registerSubmitHandler,
+        logoutHandler,
         email: auth.email,
         username: auth.username,
         role: auth.role,

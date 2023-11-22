@@ -9,6 +9,7 @@ import DoctorsDetails from "../Pages/Doctors/DoctorsDetails";
 import Dashboard from "../Pages/Dashboard";
 import AdminDashboardSet from "../Pages/AdminDashboardSet";
 import DashboardDoctor from "../Pages/DashboardDoctor";
+import Logout from "../Pages/Logout";
 
 
 const Routers = () => {
@@ -27,6 +28,7 @@ const Routers = () => {
       <Route  path="/dashboard" element={<Dashboard />} />
       <Route  path="/admdash" element={<AdminDashboardSet />} />
       <Route  path="/dashboarddoctor" element={<DashboardDoctor />} />
+      <Route  path="/logout" element={<Logout />} />
     </Routes>
   );
 };
