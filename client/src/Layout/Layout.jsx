@@ -10,23 +10,28 @@ import { useState } from "react";
 const Layout = () => {
     
   const navigate = useNavigate()
-    const [auth, setAuth] = useState({})
+  const [auth, setAuth] = useState(() =>{
+    localStorage.removeItem('accessToken')
+    return{}
+})
 
     const loginSubmitHandler = async (values) => {
         const result = await authService.login(values.email, values.password);
 
         setAuth(result);
+        localStorage.setItem('accessToken', result.accessToken)
       navigate('/')
     }
 
     const registerSubmitHandler = async (values) =>{
       const result = await authService.register(values.email, values.password, values.fullname, values.role, values.gender)
-
       setAuth(result);
+      localStorage.setItem('accessToken', result.accessToken)
       navigate('/')
   }
   const logoutHandler = () =>{
     setAuth({})
+    localStorage.removeItem('accessToken')
 }
 
     const values={
@@ -40,6 +45,7 @@ const Layout = () => {
         isAuthenticated: !!auth.email,
         gender: auth.gender
     }
+    
 
   return (
     <>
