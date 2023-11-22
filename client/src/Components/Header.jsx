@@ -31,6 +31,8 @@ const Header = () => {
     isAuthenticated,
     username,
     email,
+    role,
+    gender,
   } = useContext(AuthContext);
 
 
@@ -67,29 +69,44 @@ const Header = () => {
             </ul>
           </div>
           <div className="flex items-center gap-4">
-          {isAuthenticated && (
-            <div className="">
-              <Link to="/admdash">
-                <p>{username}</p>
-                <figure className="w-35px h-35px rounded-full">
-                  <img src={userImg} alt="user" /> 
-                </figure>
-              </Link>
-            </div>
+            <p>{gender}</p>
+            {isAuthenticated && (
+              <div className="">
+                {role === 'doctor' ? (
+                  <Link to="/doctordashboard">
+                    <h3>{role}</h3>
+                    <figure className="w-35px h-35px rounded-full">
+                      <img src={userImg} alt="user" />
+                      <p>{email}</p>
+                    </figure>
+                  </Link>
+                ) : (
+                  <Link to="/admdash">
+                    <h3>{gender}</h3>
+                    <figure className="w-35px h-35px rounded-full">
+                      <img src={userImg} alt="user" />
+                      <p>{email}</p>
+                    </figure>
+                  </Link>
+                )}
+                <div>
+                  <Link to="/logout">
+                    <button className="bg-primaryColor py-2 px-6 text-white font-[600] h-[44px] flex items-center justify-center rounded-[50px]">
+                      LOGOUT
+                    </button>
+                  </Link>
+                </div>
+              </div>
             )}
 
             {!isAuthenticated && (
-            <div>
-            <Link to="login">
-              <button className="bg-primaryColor py-2 px-6 text-white font-[600] h-[44px] flex items-center justify-center rounded-[50px]">
-                Login
-              </button>
-            </Link>
-            <span className="md" onClick={togglemenu}>
-              
-            <BiMenu className="w-6 h-6 cursor-pointer" /> 
-            </span>
-            </div>
+              <div>
+                <Link to="login">
+                  <button className="bg-primaryColor py-2 px-6 text-white font-[600] h-[44px] flex items-center justify-center rounded-[50px]">
+                    Login
+                  </button>
+                </Link>
+              </div>
             )}
           </div>
         </div>
