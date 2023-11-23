@@ -73,16 +73,16 @@ const Header = () => {
             {isAuthenticated && (
               <div className="">
                 {role === 'doctor' ? (
-                  <Link to="/doctordashboard">
-                    <h3>{role}</h3>
+                  <Link to="/admdash">
+                    
                     <figure className="w-35px h-35px rounded-full">
                       <img src={userImg} alt="user" />
                       <p>{email}</p>
                     </figure>
                   </Link>
                 ) : (
-                  <Link to="/admdash">
-                    <h3>{gender}</h3>
+                  <Link to="/dashboard:id">
+                   
                     <figure className="w-35px h-35px rounded-full">
                       <img src={userImg} alt="user" />
                       <p>{email}</p>

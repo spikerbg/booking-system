@@ -20,13 +20,15 @@ const Layout = () => {
 
         setAuth(result);
         localStorage.setItem('accessToken', result.accessToken)
+
       navigate('/')
     }
 
     const registerSubmitHandler = async (values) =>{
-      const result = await authService.register(values.email, values.password, values.fullname, values.role, values.gender)
+      const result = await authService.register(values.email, values.password, values.fullname, values.role, values.gender, values.createdAt)
       setAuth(result);
       localStorage.setItem('accessToken', result.accessToken)
+
       navigate('/')
   }
   const logoutHandler = () =>{
@@ -43,7 +45,8 @@ const Layout = () => {
         role: auth.role,
         fullname: auth.fullname,
         isAuthenticated: !!auth.email,
-        gender: auth.gender
+        gender: auth.gender,
+        createdAt: auth.createdAt
     }
     
 

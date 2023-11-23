@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3030/jsonstore/doctors';
+const baseUrl = 'http://localhost:3030/data/doctors';
 import * as reviewsService from "./reviewsService";
 
 export const getAll = async () => {
@@ -41,25 +41,35 @@ export const create = async (data) => {
         specialty: data.specialty,
         imageUrl: data.imageUrl,
         photo: data.photo,
-        date:data.date,
-        totalPatients:data.totalPatients,
-        hospital:data.hospital,
-        education:data.education,
-        short:data.short,
-        about:data.about,
-        avgRating:data.avgRating,
-        totalRating:data.totalRating,
+        date: data.date,
+        totalPatients: data.totalPatients,
+        hospital: data.hospital,
+        education: data.education,
+        short: data.short,
+        about: data.about,
+        avgRating: data.avgRating,
+        totalRating: data.totalRating,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
     };
 
+    // Get the access token from local storage
+    const token = localStorage.getItem('accessToken');
+
+    // Set up the headers with the token if it exists
+    const headers = {
+        'Content-Type': 'application/json',
+    };
+
+    if (token) {
+        headers['X-Authorization'] = token;
+    }
+
     const response = await fetch(baseUrl, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
+        headers: headers,
         body: JSON.stringify(body),
-    })
+    });
 
     const result = await response.json();
     console.log(result);

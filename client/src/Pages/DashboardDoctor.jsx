@@ -1,15 +1,20 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import React from "react"; // Fix the import statement for React
 import { formatDate } from "../utils/dataUtils";
 import * as doctorService from "../serviceR/doctorService"
-import * as userService from "../serviceR/userService";
+import * as authService from "../serviceR/authService";
 import CreateDoctorModal from "./CreateDoctorModal"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from "../Components/style/dashboarddoctor.module.css"
 import * as bookingService from "../serviceR/bookingService"
+import { useContext } from "react";
+import AuthContext from '../Context/authContext';
+
 
 export default function DashboardDoctor() {
+  const { id } = useParams();
 
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState([]);
@@ -19,25 +24,18 @@ export default function DashboardDoctor() {
 
   
   useEffect(() => {
-    const fetchData = async () => {
+    async function fetchUser() {
       try {
-        // Fetch user information
-        const userId = "7b3143e1-d6df-4e67-bd7e-5f8b03f2fd3f"; // Replace with the desired user ID
-        const userData = await userService.getOne(userId);
-        setUser(userData); // Set the user data in state
-
-        // Fetch all bookings
-        const bookingData = await bookingService.getAll();
-        setBooking(bookingData); // Set the booking data in state
+        const selectedUser = await authService.getOne(id);
+        setUser(selectedUser);
       } catch (error) {
-        console.error('Error fetching data:', error);
-      } finally {
-       
+        // Handle error, e.g., display an error message
+        console.error("Error fetching doctor data:", error);
       }
-    };
+    }
 
-    fetchData(); // Call the function to fetch data
-  }, []);
+    fetchUser();
+  }, [id]);
   const createDoctorClickHandler = () => {
     setShowCreate(true);
 };
@@ -75,7 +73,13 @@ const doctorCreateHandler = async (e) => {
   //     .catch(err => console.log(err))
   //     .finally(() => setIsLoading(false));
   // }, []);
-
+  const {
+    email,
+    fullname,
+    role,
+    gender,
+    createdAt,
+} = useContext(AuthContext);
 
 
 
@@ -89,8 +93,8 @@ const doctorCreateHandler = async (e) => {
           className="home-image"
         />
         <div className={styles['home-container2']}>
-          <h1>{user.fullname}</h1>
-          <h1>{user.role}</h1>
+          <h1>{role}</h1>
+          <h1>{fullname}</h1>
         </div>
         <div className={styles['home-container3']}>
           <button type="button" className="block rounded-md mr-2 bg-red-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">
@@ -107,17 +111,17 @@ const doctorCreateHandler = async (e) => {
       </div>
       <div className={styles['home-container4']}>
         <div className={styles['home-container5']}>
-          <h1>Info for patient</h1>
+          <h1>Info for profile</h1>
 
-          <span>{user.fullname}</span>
+          <span>Fullname: {fullname}</span>
 
-          <span>{user.email}</span>
+          <span>Email: {email}</span>
 
-          <span>{user.role}</span>
+          <span>Role: {role}</span>
 
-          <span>{user.gendar}</span>
+          <span>Gender: {gender}</span>
 
-          <span>{user.createdAt}</span>
+          <span>Create At:{formatDate(createdAt)}</span>
 
 
         </div>

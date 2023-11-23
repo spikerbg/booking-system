@@ -15,7 +15,6 @@ const buildOptions = (data) =>{
             'X-Authorization' : token
         }
     }
-    
     return options
 
 }
@@ -25,11 +24,17 @@ const request = async (method, url, data) =>{
         ...buildOptions(data),
         method,
     })
-
-
-    const result = await response.json()
-    return result
-}
+    if (response.status === 204) {
+        return {}
+     }
+    
+        const result = await response.json()
+     if (!response.ok){
+        throw new Error(result.message)
+     }
+    
+        return result
+    }
 
 export const get = request.bind(null, 'GET')
 export const post = request.bind(null, 'POST')

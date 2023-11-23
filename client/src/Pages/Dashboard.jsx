@@ -3,10 +3,13 @@ import { useState, useEffect } from "react";
 import React from "react"; // Fix the import statement for React
 
 import styles from "../Components/style/dashboard.module.css"
+import { useContext } from "react";
+import AuthContext from '../Context/authContext';
+import * as authService from "../serviceR/authService";
+import { useParams } from "react-router-dom";
+import { formatDate } from "../utils/dataUtils";
 
 
-
-import * as userService from "../serviceR/userService";
 
 
 // export default function Dashboard() {
@@ -26,32 +29,27 @@ import * as userService from "../serviceR/userService";
 
 //     fetchData();
 //   }, []);
-export default function Dashboard({ userId,
-  fullname,
-  lastName,
-  email,
-  phoneNumber,
-  createdAt,
-  imageUrl, }) {
+export default function Dashboard({}) {
+  const { id } = useParams();
 
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
+  
   useEffect(() => {
-    const fetchUserInfo = async () => {
-      const userId = "7b3143e1-d6df-4e67-bd7e-5f8b03f2fd3f"; // Replace with the desired user ID
-
+    async function fetchUser() {
       try {
-        const userData = await userService.getOne(userId); // Fetch user information
-        setUser(userData); // Set the user data in state
+        const selectedUser = await authService.getOne(id);
+        setUser(selectedUser);
       } catch (error) {
-        console.error('Error fetching user information:', error);
+        // Handle error, e.g., display an error message
+        console.error("Error fetching doctor data:", error);
       }
-    };
+    }
 
-    fetchUserInfo();
-  }, []);
+    fetchUser();
+  }, [id]);
 
 
   // useEffect(() => {
@@ -63,7 +61,13 @@ export default function Dashboard({ userId,
   //     .finally(() => setIsLoading(false));
   // }, []);
 
-
+  const {
+    email,
+    fullname,
+    role,
+    gender,
+    createdAt,
+} = useContext(AuthContext);
 
 
 
@@ -76,8 +80,8 @@ export default function Dashboard({ userId,
           className="home-image"
         />
         <div className={styles['home-container2']}>
-          <h1>{user.fullname}</h1>
-          <h1>{user.role}</h1>
+        <h1>{role}</h1>
+          <h1>{fullname}</h1>
         </div>
         <div className={styles['home-container3']}>
           <button type="button" className={styles['btndbred']}>
@@ -90,17 +94,19 @@ export default function Dashboard({ userId,
       </div>
       <div className={styles['home-container4']}>
         <div className={styles['home-container5']}>
-          <h1>Info for patient</h1>
+        <h1>Info for profile</h1>
 
-          <span>{user.fullname}</span>
+<span>Fullname: {fullname}</span>
 
-          <span>{user.email}</span>
+<span>Email: {email}</span>
 
-          <span>{user.role}</span>
+<span>Role: {role}</span>
 
-          <span>{user.gendar}</span>
+<span>Gender: {gender}</span>
 
-          <span>{user.createdAt}</span>
+
+<span>Create At:{formatDate(createdAt)}</span>
+
 
 
         </div>
@@ -111,32 +117,6 @@ export default function Dashboard({ userId,
           <span>Text</span>
           <span>Text</span>
         </div>
-      </div>
-      <div>
-        <h1>User List</h1>
-
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <ul>
-            {users.map(user => (
-              <li key={user.email}>
-                {user.fullname} {user.password} - {user.email} {user.role}
-                <button onClick={() => userInfoClickHandler(user.id)}>Info</button>
-              </li>
-            ))}
-          </ul>
-        )}
-
-        {selectedUser && (
-          <div>
-            <h2>UserF Details</h2>
-            <p>First Name: {selectedUser.firstName}</p>
-            <p>Last Name: {selectedUser.lastName}</p>
-            <p>Email: {selectedUser.email}</p>
-            {/* Add more user details as needed */}
-          </div>
-        )}
       </div>
     </div>
 
