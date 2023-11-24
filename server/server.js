@@ -1350,6 +1350,16 @@
                 imageUrl: "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
                 fullname: "admin",
                 createdAt: "2023-11-01T07:22:00.358Z",
+    		},
+            "2a7e9d18-6f4c-4e83-a12b-9c1f8b5d2a4d": {
+    			email: "superadmin@abv.bg",
+    			username: "Superadmin",
+    			hashedPassword: "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302",
+                role: "admin",
+                gender: "male",
+                imageUrl: "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
+                fullname: "Superadmin",
+                createdAt: "2023-11-01T07:22:00.358Z",
     		}
     	},
     	sessions: {
@@ -1424,6 +1434,16 @@
                 role: "doctor",
                 gender: "male",
                 fullname: "admin",
+                createdAt: "2023-11-01T07:22:00.358Z",
+    		},
+            "2a7e9d18-6f4c-4e83-a12b-9c1f8b5d2a4d": {
+    			email: "superadmin@abv.bg",
+    			username: "Superadmin",
+    			hashedPassword: "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302",
+                role: "admin",
+                gender: "male",
+                imageUrl: "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
+                fullname: "Superadmin",
                 createdAt: "2023-11-01T07:22:00.358Z",
     		}
     	},

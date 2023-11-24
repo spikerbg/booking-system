@@ -73,16 +73,20 @@ const Header = () => {
             <p>{fullname}</p>
             {isAuthenticated && (
               <div className="flex items-center gap-4">
-                {role === 'doctor' ? (
-                  <Link to="/dashboarddoctor:id">
-                    
+                  {role === 'doctor' ? (
+                  <Link to="/dashboarddoctor/:id">
                     <figure className="w-35px h-35px rounded-full">
                       <img src={imageUrl} alt="doctor" className="rounded-full" width="48" height="48" />
                     </figure>
                   </Link>
+                ) : role === 'admin' ? (
+                  <Link to="/admdash/">
+                    <figure className="w-35px h-35px rounded-full">
+                      <img src={imageUrl} alt="admin" className="rounded-full" width="48" height="48" />
+                    </figure>
+                  </Link>
                 ) : (
-                  <Link to="/dashboard:id">
-                   
+                  <Link to="/dashboard/:id">
                     <figure className="w-35px h-35px rounded-full">
                       <img src={imageUrl} alt="user" className="rounded-full" width="48" height="48" />
                     </figure>
