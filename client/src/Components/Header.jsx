@@ -32,6 +32,7 @@ const Header = () => {
     role,
     gender,
     fullname,
+    imageUrl,
     isAuthenticated,
   } = useContext(AuthContext);
 
@@ -76,14 +77,14 @@ const Header = () => {
                   <Link to="/dashboarddoctor:id">
                     
                     <figure className="w-35px h-35px rounded-full">
-                      <img src={userImg} alt="user" />
+                      <img src={imageUrl} alt="doctor" className="rounded-full" width="48" height="48" />
                     </figure>
                   </Link>
                 ) : (
                   <Link to="/dashboard:id">
                    
                     <figure className="w-35px h-35px rounded-full">
-                      <img src={userImg} alt="user" />
+                      <img src={imageUrl} alt="user" />
                     </figure>
                   </Link>
                 )}
@@ -100,7 +101,7 @@ const Header = () => {
             {!isAuthenticated && (
               <div>
                 <Link to="login">
-                  <button className="bg-primaryColor py-2 px-6 text-white font-[600] h-[44px] flex items-center justify-center rounded-[50px]">
+                  <button className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     Login
                   </button>
                 </Link>
