@@ -67,3 +67,4 @@ export const deleteAccountLocally = (userId) => {
   // This is a placeholder, you need to implement the logic based on your application structure
   console.log(`Deleting user with ID ${userId} from client state`);
 };
+

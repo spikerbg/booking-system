@@ -86,3 +86,9 @@ export const remove = async (userId) => {
 
     return result;
 };
+
+export const edit = async (doctorId, data) => {
+    const result = await request.put(`${baseUrl}/${doctorId}`, data);
+
+    return result;
+};

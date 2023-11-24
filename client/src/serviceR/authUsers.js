@@ -30,3 +30,68 @@ export const getAll = async () => {
     // This is a placeholder, you need to implement the logic based on your application structure
     console.log(`Deleting user with ID ${userId} from client state`);
   };
+
+  export const login = async (email, password) =>{
+    const result = await request.post(`${baseUrl}/login` , {
+      email,
+      password,
+     })
+  
+     return result
+  }
+  export const register = async (email, password, fullname, role, gender, imageUrl) => {
+    const currentDate = new Date().toISOString();
+  
+    try {
+      const result = await request.post(`${baseUrl}register`, {
+        email,
+        password,
+        fullname,
+        role,
+        gender,
+        imageUrl,
+        createdAt: currentDate,
+        updatedAt: currentDate,
+      });
+  
+      return result;
+    } catch (error) {
+      console.error('Registration failed:', error.message);
+      throw error; // Re-throw the error to propagate it further
+    }
+  };
+  
+    export const logout = () => request.get(`${baseUrl}logout`)
+  
+    export const getOne = async (userId) =>{
+      const result = await request.get(`${baseUrl}/${userId}`)
+      return result
+  }
+  
+  export const create = async (data) => {
+    const body = {
+        fullname: data.fullname,
+        email: data.email,
+        password: data.password,
+        imageUrl: data.imageUrl,
+        phoneNumber: data.phoneNumber,
+        role: data.role,
+        gender:data.gender,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+    };
+  
+    const response = await fetch(baseUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+    })
+  
+    const result = await response.json();
+    console.log(result);
+  
+    return result;
+  };
+  

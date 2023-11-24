@@ -27,12 +27,6 @@ export const create = async (data) => {
         gender:data.gender,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
-        address: {
-            country: data.country,
-            city: data.city,
-            street: data.street,
-            streetNumber: data.streetNumber,
-        }
     };
 
     const response = await fetch(baseUrl, {
