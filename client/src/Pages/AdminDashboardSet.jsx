@@ -4,6 +4,7 @@ import React from "react"; // Fix the import statement for React
 // import { db } from '../firebase';
 
 import * as authUsers from "../serviceR/authUsers";
+import * as userService from "../serviceR/userService";
 import * as authService from "../serviceR/authService";
 import AdminDashboard from "./AdminDashboard";
 import CreateUserModal from "./CreateUserModal";

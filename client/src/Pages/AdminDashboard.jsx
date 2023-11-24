@@ -4,6 +4,9 @@ import React from "react"; // Fix the import statement for React
 // import { db } from '../firebase';
 import { formatDate } from "../utils/dataUtils";
 import { AiFillEdit, AiFillDelete, AiFillInfoCircle } from "react-icons/ai";
+import AuthContext from "../Context/authContext";
+import { useContext } from "react";
+
 
 import * as userService from "../serviceR/userService";
 
@@ -18,7 +21,11 @@ export default function AdminDashboard({
     onDeleteClick,
     createdAt
 }) {
+  const {
+    imageUrl,
+  } = useContext(AuthContext);
 
+   
 
 
   const infoClickHandler = () => {
@@ -39,7 +46,7 @@ const deleteClickHandler = () => {
     <>
     <tr>
       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{fullname}</td>
-      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><p>image</p></td>
+      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><img src={imageUrl} alt="user" className="rounded-full" width="48" height="48" /></td>
       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{email}</td>
       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{role}</td>
       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{gender}</td>
@@ -50,9 +57,6 @@ const deleteClickHandler = () => {
                 </button>
                 <button className="px-3 py-2 text-xs mr-2 font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" title="Delete" onClick={deleteClickHandler}>
                  <AiFillDelete />
-                </button>
-                <button className="px-3 py-2 text-xs mr-2 font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" title="Info" onClick={infoClickHandler}>
-                   <AiFillInfoCircle />
                 </button>
             </td>
                       </tr>
