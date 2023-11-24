@@ -25,9 +25,9 @@ const Routers = () => {
       <Route path="/contact" element={<Contact />} />
       <Route path="/services" element={<Services services={Services} />} />
       <Route path="/contactus" element={<Contact />} />
-      <Route  path="/dashboard:id" element={<Dashboard />} />
+      <Route  path="/dashboard/:id" element={<Dashboard />} />
       <Route  path="/admdash" element={<AdminDashboardSet />} />
-      <Route  path="/dashboarddoctor:id" element={<DashboardDoctor />} />
+      <Route  path="/dashboarddoctor/:id" element={<DashboardDoctor />} />
       <Route  path="/logout" element={<Logout />} />
     </Routes>
   );
