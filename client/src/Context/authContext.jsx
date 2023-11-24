@@ -3,6 +3,7 @@ import { createContext, useState } from "react";
 import * as authService from '../serviceR/authService'
 import { useNavigate } from 'react-router-dom';
 import usePersistedState from "../Hooks/usePersistedState";
+import * as authUsers from '../serviceR/authUsers'
 
 
 const AuthContext = createContext();
@@ -46,6 +47,7 @@ export const AuthProvider = ({
           role: auth.role,
           imageUrl: auth.imageUrl,
           createdAt: auth.createdAt,
+          userId: auth.id,
           isAuthenticated: !!auth.email,
       }
     return(
