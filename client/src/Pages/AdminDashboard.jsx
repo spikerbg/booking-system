@@ -1,7 +1,7 @@
-// import { doc, getDoc } from "firebase/firestore";
+
 import { useState, useEffect } from "react";
-import React from "react"; // Fix the import statement for React
-// import { db } from '../firebase';
+import React from "react"; //
+
 import { formatDate } from "../utils/dataUtils";
 import { AiFillEdit, AiFillDelete, AiFillInfoCircle } from "react-icons/ai";
 import AuthContext from "../Context/authContext";
