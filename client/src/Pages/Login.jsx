@@ -5,6 +5,7 @@ import React from "react";
 import styles from '../Components/style/login.module.css'
 import useForm from "../Hooks/useForm";
 import AuthContext  from "../Context/authContext";
+import { ToastContainer,toast } from 'react-toastify';
 import { useContext }  from "react";
 
 const LoginFormKyes = {
@@ -67,6 +68,7 @@ const Login = () => {
           </Link>
         </p>
       </div>
+          <ToastContainer />
     </section>
   );
 };

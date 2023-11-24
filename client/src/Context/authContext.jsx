@@ -4,6 +4,7 @@ import * as authService from '../serviceR/authService'
 import { useNavigate } from 'react-router-dom';
 import usePersistedState from "../Hooks/usePersistedState";
 import * as authUsers from '../serviceR/authUsers'
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const AuthContext = createContext();
@@ -20,17 +21,22 @@ export const AuthProvider = ({
           const result = await authService.login(values.email, values.password);
   
           setAuth(result);
+          toast.success('User login successfully!', {
+            position: toast.POSITION.TOP_RIGHT,
+          })
           localStorage.setItem('accessToken', result.accessToken)
-  
-        navigate('/')
+          setTimeout(() => {navigate("/");}, 4600)
       }
   
       const registerSubmitHandler = async (values) =>{
         const result = await authService.register(values.email, values.password, values.fullname, values.role, values.gender,values.imageUrl, values.createdAt)
         setAuth(result);
+        toast.success('User registration successfully!', {
+          position: toast.POSITION.TOP_RIGHT,
+        })
         localStorage.setItem('accessToken', result.accessToken)
   
-        navigate('/')
+        setTimeout(() => {navigate("/");}, 2900)
     }
     const logoutHandler = () =>{
       setAuth({})

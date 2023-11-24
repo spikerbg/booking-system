@@ -53,14 +53,6 @@ const Signup = () => {
       imageUrl: '',
     })
 
-const notify = ()=>{
-  toast.success('Successful register!')
-  toast('You will be redirect after 5 second', 
-           {position: toast.POSITION.TOP_RIGHT})
-}
-
-
-
   return (
     <section className="px-5 xl:px-0">
       <div className="max-w-[1170px] mx-auto">
@@ -169,7 +161,7 @@ const notify = ()=>{
                 <button
                   type="submit"
                   className="w-full bg-primaryColor text-white text-[18px] leading-[30px] rounded-lg py-3"
-                  // onClick={notify}
+                
                 >
                   Signup
                 </button>
