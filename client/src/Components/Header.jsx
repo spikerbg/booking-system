@@ -28,11 +28,11 @@ const navLinks = [
 const Header = () => {
   const menuRef = useRef(null);
   const {
-    isAuthenticated,
-    username,
     email,
     role,
     gender,
+    fullname,
+    isAuthenticated,
   } = useContext(AuthContext);
 
 
@@ -69,15 +69,14 @@ const Header = () => {
             </ul>
           </div>
           <div className="flex items-center gap-4">
-            <p>{gender}</p>
+            <p>{fullname}</p>
             {isAuthenticated && (
-              <div className="">
+              <div className="flex items-center gap-4">
                 {role === 'doctor' ? (
-                  <Link to="/admdash">
+                  <Link to="/dashboarddoctor:id">
                     
                     <figure className="w-35px h-35px rounded-full">
                       <img src={userImg} alt="user" />
-                      <p>{email}</p>
                     </figure>
                   </Link>
                 ) : (
@@ -85,13 +84,12 @@ const Header = () => {
                    
                     <figure className="w-35px h-35px rounded-full">
                       <img src={userImg} alt="user" />
-                      <p>{email}</p>
                     </figure>
                   </Link>
                 )}
                 <div>
                   <Link to="/logout">
-                    <button className="bg-primaryColor py-2 px-6 text-white font-[600] h-[44px] flex items-center justify-center rounded-[50px]">
+                    <button className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                       LOGOUT
                     </button>
                   </Link>
