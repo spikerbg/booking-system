@@ -84,7 +84,7 @@ const Header = () => {
                   <Link to="/dashboard:id">
                    
                     <figure className="w-35px h-35px rounded-full">
-                      <img src={imageUrl} alt="user" />
+                      <img src={imageUrl} alt="user" className="rounded-full" width="48" height="48" />
                     </figure>
                   </Link>
                 )}
