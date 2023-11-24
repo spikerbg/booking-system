@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import * as doctorService from "../../serviceR/doctorService";
 import starIcon from "../../assets/images/Star.png";
 import DoctorAbout from "./DoctorAbout.jsx";
@@ -7,11 +7,13 @@ import Feedback from "./Feedback.jsx";
 import SidePanel from "./SidePanel.jsx";
 import { BookContext } from '../../Context/BookContext';
 import styles from '../../Components/style/doctordetails.module.css'
+import AuthContext from "../../Context/authContext";
 
 const DoctorsDetails = ({}) => {
   const [doctor, setDoctor] = useState(null);
   const [tab, setTab] = useState("about");
   const { id } = useParams();
+  const { email, userId } = useContext(AuthContext);
 
   useEffect(() => {
     async function fetchDoctor() {
@@ -74,7 +76,12 @@ const DoctorsDetails = ({}) => {
                 </p>
               </div>
             </div>
-
+            {userId === doctor._ownerId && (
+                <div className="mt-5 gap-2 flex">
+                    <Link to="/doctors/:id/edit" className="px-3 py-2 text-xs font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300">Edit</Link>
+                    <Link to="/doctors/:id/delete" className="px-3 py-2 text-xs font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300">Delete</Link>
+                </div>
+                )}
             <div className="mt-[50px] border-b border-solid border-[#0066ff34]">
               <button
                 onClick={() => setTab("about")}
