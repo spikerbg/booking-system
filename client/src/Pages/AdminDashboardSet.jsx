@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import React from "react"; // Fix the import statement for React
 // import { db } from '../firebase';
 
+import * as authUsers from "../serviceR/authUsers";
 import * as authService from "../serviceR/authService";
 import AdminDashboard from "./AdminDashboard";
 import CreateUserModal from "./CreateUserModal";
@@ -24,7 +25,7 @@ export default function AdminDashboardSet(){
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const result = await authService.getAll();
+        const result = await authUsers.getAll();
         setUsers(result);
       } catch (error) {
         console.error("Error fetching users:", error);
@@ -37,13 +38,7 @@ export default function AdminDashboardSet(){
       fetchData();
     }, []); // Empty dependency array to run only once on mount
     
-    const {
-      email,
-      fullname,
-      role,
-      gender,
-      createdAt,
-  } = useContext(AuthContext);
+  
 
     const createUserClickHandler = () => {
         setShowCreate(true);
@@ -85,7 +80,7 @@ export default function AdminDashboardSet(){
 
     const deleteUserHandler = async () => {
         // Remove user from server
-        await userService.remove(selectedUser);
+        await authService.deleteAccount(selectedUser);
 
         // Remove user from state
         setUsers(state => state.filter(user => user.id !== selectedUser));
@@ -133,7 +128,7 @@ export default function AdminDashboardSet(){
             <a href="#" className="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group" aria-current="page">
                 <svg className="w-4 h-4 me-2 text-gray-400 dark:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
                     <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
-                </svg>Doctors{fullname}{email}
+                </svg>Doctors
             </a>
         </li>
     </ul>
@@ -143,7 +138,7 @@ export default function AdminDashboardSet(){
             <h1 className="text-base font-semibold leading-6 text-gray-900">Users</h1>
             <p className="mt-2 text-sm text-gray-700">
               A list of all the users in your account including their name, title, email and role.
-              {email}{createdAt}
+              
             </p>
           </div>
           <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
@@ -193,14 +188,14 @@ export default function AdminDashboardSet(){
 
 
             <tbody className="divide-y divide-gray-200 bg-white">
-                    {/* {users.map(user => (
+                    {users.map(user => (
                         <AdminDashboard
                         key={user.email}
                             userId={user.id}
                             createdAt={user.createdAt}
                             email={user.email}
                             role={user.role}
-                            fullname={fullname}
+                            fullname={user.fullname}
                             imageUrl={user.imageUrl}
                             gender={user.gender}
                             password={user.password}
@@ -208,7 +203,7 @@ export default function AdminDashboardSet(){
                             onDeleteClick={deleteUserClickHandler}
                             
                         />
-                    ))} */}
+                    ))}
                 </tbody>
             </table>
             <ToastContainer />

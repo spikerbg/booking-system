@@ -31,7 +31,7 @@
         margin-right: 0.625rem; 
         font-weight: 500; 
         color: #ffffff; 
-        background-color: rgb(13, 61, 150); 
+        background-color: rgb(13, 61, 150) !important; 
         border-radius: 0.375rem; 
         text-align: center; 
         cursor: pointer;

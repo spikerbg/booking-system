@@ -41,12 +41,11 @@ const Layout = () => {
         registerSubmitHandler,
         logoutHandler,
         email: auth.email,
-        username: auth.username,
-        role: auth.role,
         fullname: auth.fullname,
-        isAuthenticated: !!auth.email,
         gender: auth.gender,
-        createdAt: auth.createdAt
+        role: auth.role,
+        createdAt: auth.createdAt,
+        isAuthenticated: !!auth.email,
     }
     
 

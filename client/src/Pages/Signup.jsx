@@ -1,8 +1,6 @@
 import signupImg from "../assets/images/signup.gif";
 import { Link, useNavigate } from "react-router-dom";
 import avatar from "../assets/images/patient-avatar.png";
-import { useState, useEffect } from "react";
-import * as userService from "../serviceR/userService.js";
 import { ToastContainer, toast } from 'react-toastify';
 import styles from '../Components/style/Signup.module.css'
 import { useContext } from "react";
@@ -10,16 +8,9 @@ import AuthContext from "../Context/authContext";
 import useForm from "../Hooks/useForm";
 // import 'react-toastify/dist/ReactToastify.css';
 
-const RegisterFormKeys ={
-  Email:"email",
- Password:"password",
- Fullname: "fullname",
- Role: "role",
- Gender: "gender",
- 
-}
 
-const Signup = ({}) => {
+
+const Signup = () => {
   
   //   const [users, setUsers] = useState([])
   //   const navigate = useNavigate()
@@ -54,19 +45,19 @@ const Signup = ({}) => {
     
     const {registerSubmitHandler} = useContext(AuthContext)
     const {values, onChange, onSubmit} = useForm(registerSubmitHandler,{
-        [RegisterFormKeys.Email]: '',
-        [RegisterFormKeys.Password]: '',
-        [RegisterFormKeys.Fullname]: '',
-        [RegisterFormKeys.Role]: '',
-        [RegisterFormKeys.Gender]: '',
+      email: '',
+      password: '',
+      fullname: '',
+      role: '',
+      gender: '',
     })
-
 
 const notify = ()=>{
   toast.success('Successful register!')
   toast('You will be redirect after 5 second', 
            {position: toast.POSITION.TOP_RIGHT})
 }
+
 
 
   return (
@@ -84,14 +75,15 @@ const notify = ()=>{
             <h3 className="text-headingColor text-[22px] leading-9 font-bold mb-10">
               Create a <span className={"text-primaryColor"}>account</span>
             </h3>
-            <form onSubmit={onSubmit}>
+            <form id="register" onSubmit={onSubmit}>
               <div className="mb-5">
                 <input
                   type="text"
                   placeholder="Full Name"
+                  id="fullname"
                   name="fullname"
                   className="w-full py-4 border-b border-solid border-[#006ff61] focus:outline-none focus:border-b-primaryColor text-[22px] leading-7 text-headingColor placeholder:text-textColor rounded-md cursor-pointer"
-                  values={values[RegisterFormKeys.Fullname]}
+                  value={values.fullname}
                   onChange={onChange}
                   required
                 />
@@ -102,7 +94,7 @@ const notify = ()=>{
                   placeholder="Enter Your Email"
                   name="email"
                   className="w-full py-4 border-b border-solid border-[#006ff61] focus:outline-none focus:border-b-primaryColor text-[22px] leading-7 text-headingColor placeholder:text-textColor rounded-md cursor-pointer"
-                  values={values[RegisterFormKeys.Email]}
+                  value={values.email}
                   onChange={onChange}
                   required
                 />
@@ -113,7 +105,7 @@ const notify = ()=>{
                   placeholder="Password"
                   name="password"
                   className="w-full py-4 border-b border-solid border-[#006ff61] focus:outline-none focus:border-b-primaryColor text-[22px] leading-7 text-headingColor placeholder:text-textColor rounded-md cursor-pointer"
-                  values={values[RegisterFormKeys.Password]}
+                  value={values.password}
                   onChange={onChange}
                   required
                 />
@@ -127,10 +119,12 @@ const notify = ()=>{
                   Are you a:
                   <select
                     name="role"
+                    id="role"
                     className="text-textColor font-semibold text-[15px] leading-7 px-4 py-3 focus:outline-none"
-                    values={values[RegisterFormKeys.Role]}
+                    value={values.role}
                     onChange={onChange}
                   >
+                    
                     <option value="patient">Patient</option>
                     <option value="doctor">Doctor</option>
                   </select>
@@ -141,8 +135,9 @@ const notify = ()=>{
                 Gender:
                 <select
                   name='gender'
+                  id="gender"
                   className='text-textColor font-semibold text-[15px] leading-7 px-4 py-3 focus:outline-none'
-                  values={values[RegisterFormKeys.Gender]}
+                  value={values.gender}
                   onChange={onChange}
                 >
                   <option value=""></option>
@@ -176,7 +171,7 @@ const notify = ()=>{
                 <button
                   type="submit"
                   className="w-full bg-primaryColor text-white text-[18px] leading-[30px] rounded-lg py-3"
-                  onClick={notify}
+                  // onClick={notify}
                 >
                   Signup
                 </button>

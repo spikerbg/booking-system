@@ -415,7 +415,7 @@
 
 
     const userService = new Service_1();
-
+    userService.get('users', getUsers);
     userService.get('me', getSelf);
     userService.post('register', onRegister);
     userService.post('login', onLogin);
@@ -442,6 +442,10 @@
 
     function onLogout(context, tokens, query, body) {
         return context.auth.logout();
+    }
+    function getUsers(context, tokens, query, body) {
+        const users = context.protectedStorage.query('users', {})
+        return users;
     }
 
     var users = userService.parseRequest;
@@ -1332,6 +1336,7 @@
     		"847ec027-f659-4086-8032-5173e2f9c93a": {
     			email: "george@abv.bg",
     			username: "George",
+                fullname: "test",
     			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
                 
     		},
@@ -1394,14 +1399,33 @@
                 short: "Trust Dr. Uris Tar for expert gynecological care that prioritizes both the physical and emotional well-being of every woman he serves."
               }
     	},
-    	comments: {
-    		"0a272c58-b7ea-4e09-a000-7ec988248f66": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			content: "Great recipe!",
-    			recipeId: "8f414b4f-ab39-4d36-bedb-2ad69da9c830",
-    			_createdOn: 1614260681375,
-    			_id: "0a272c58-b7ea-4e09-a000-7ec988248f66"
+    	userstest: {
+    		"35c62d76-8152-4626-8712-eeb96381bea8": {
+    			email: "peter@abv.bg",
+    			username: "Peter",
+    			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
+                role: "patient",
+                gender: "male",
+                fullname: "peter",
+                createdAt: "2023-11-01T07:22:00.358Z",
+    		},
+    		"847ec027-f659-4086-8032-5173e2f9c93a": {
+    			email: "george@abv.bg",
+    			username: "George",
+    			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
+                
+    		},
+    		"60f0cf0b-34b0-4abd-9769-8c42f830dffc": {
+    			email: "admin@abv.bg",
+    			username: "Admin",
+    			hashedPassword: "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302",
+                role: "doctor",
+                gender: "male",
+                fullname: "admin",
+                createdAt: "2023-11-01T07:22:00.358Z",
     		}
+    	},
+    	sessions: {
     	},
     	records: {
     		i01: {
