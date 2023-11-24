@@ -79,6 +79,7 @@ const doctorCreateHandler = async (e) => {
     role,
     gender,
     createdAt,
+    imageUrl,
 } = useContext(AuthContext);
 
 
@@ -88,7 +89,7 @@ const doctorCreateHandler = async (e) => {
     <div className={styles['home-container']}>
       <div className={styles['home-container1']}>
         <img
-          src="https://play.teleporthq.io/static/svg/default-img.svg"
+          src={imageUrl}
           alt="image"
           className="home-image"
         />

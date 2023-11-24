@@ -50,6 +50,7 @@ const Signup = () => {
       fullname: '',
       role: '',
       gender: '',
+      imageUrl: '',
     })
 
 const notify = ()=>{
@@ -151,21 +152,18 @@ const notify = ()=>{
                   <img src={avatar} alt="" className="w-full rounded-full" />
                 </figure>
 
-                <div className="relative w-[130px] h-[50px]">
-                  <input
-                    type="file"
-                    name="photo"
-                    id="customFile"
-                    accept=".jpg, .png"
-                    className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
-                  />
-                  <label
-                    htmlFor="customFile"
-                    className="absolute top-0 left-0 w-full h-full flex items-center cursor-pointer px-[0.75rem] py-[0.375rem] text-[15px] leading-6 overflow-hidden bg-[#0066ff46] text-headingColor font-semibold rounded-lg truncate"
-                  >
-                    Upload Photo
-                  </label>
-                </div>
+                <div className="mb-5">
+                <input
+                  type="text"
+                  placeholder="http://image.com/image"
+                  id="imageUrl"
+                  name="imageUrl"
+                  className="w-full py-4 border-b border-solid border-[#006ff61] focus:outline-none focus:border-b-primaryColor text-[22px] leading-7 text-headingColor placeholder:text-textColor rounded-md cursor-pointer"
+                  value={values.imageUrl}
+                  onChange={onChange}
+                />
+              </div>
+              
               </div>
               <div className="mt-7">
                 <button

@@ -9,7 +9,7 @@ export const login = async (email, password) =>{
 
    return result
 }
-export const register = async (email, password, fullname, role, gender) => {
+export const register = async (email, password, fullname, role, gender, imageUrl) => {
   const currentDate = new Date().toISOString();
 
   try {
@@ -19,6 +19,7 @@ export const register = async (email, password, fullname, role, gender) => {
       fullname,
       role,
       gender,
+      imageUrl,
       createdAt: currentDate,
       updatedAt: currentDate,
     });

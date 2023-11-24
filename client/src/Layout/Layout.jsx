@@ -25,7 +25,7 @@ const Layout = () => {
     }
 
     const registerSubmitHandler = async (values) =>{
-      const result = await authService.register(values.email, values.password, values.fullname, values.role, values.gender, values.createdAt)
+      const result = await authService.register(values.email, values.password, values.fullname, values.role, values.gender,values.imageUrl, values.createdAt)
       setAuth(result);
       localStorage.setItem('accessToken', result.accessToken)
 
@@ -44,6 +44,7 @@ const Layout = () => {
         fullname: auth.fullname,
         gender: auth.gender,
         role: auth.role,
+        imageUrl: auth.imageUrl,
         createdAt: auth.createdAt,
         isAuthenticated: !!auth.email,
     }

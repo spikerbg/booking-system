@@ -66,6 +66,7 @@ export default function Dashboard({}) {
     fullname,
     role,
     gender,
+    imageUrl,
     createdAt,
 } = useContext(AuthContext);
 
@@ -75,7 +76,7 @@ export default function Dashboard({}) {
     <div className={styles['home-container']}>
       <div className={styles['home-container1']}>
         <img
-          src="https://play.teleporthq.io/static/svg/default-img.svg"
+          src={imageUrl}
           alt="image"
           className="home-image"
         />

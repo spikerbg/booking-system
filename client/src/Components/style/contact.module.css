@@ -1,5 +1,5 @@
 .btn {
-	background-color:#1260e6;
+	background-color:#1260e6 !important;
 	border-radius:28px;
 	border:1px solid #4e6096;
 	display:inline-block;
@@ -7,7 +7,7 @@
 	color:#ffffff;
 	font-family:Arial;
 	font-size:17px;
-	padding:16px 31px;
+	padding:16px 18px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #283966;
     margin-top: 20px;
