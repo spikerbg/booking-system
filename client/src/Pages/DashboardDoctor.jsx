@@ -36,6 +36,14 @@ export default function DashboardDoctor() {
 
     fetchUser();
   }, [id]);
+
+  useEffect(() => {
+
+    bookingService.getAll()
+        .then(result => setBooking(result))
+        .catch(err => console.log(err))
+}, []);
+
   const createDoctorClickHandler = () => {
     setShowCreate(true);
 };
@@ -129,7 +137,8 @@ const doctorCreateHandler = async (e) => {
         <div className={styles['home-container6']}>
           <h2>Booking</h2>
           {booking.map((data,id) => (<ul key={id}>
-            <li >{data.selectedDates}</li>
+            <li >Date:{data.selectedDates}</li>
+            <li>Doctor Id:{data.doctorId}</li>
           </ul>))}
         </div>
       </div>

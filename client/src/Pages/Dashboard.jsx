@@ -85,10 +85,10 @@ export default function Dashboard({}) {
           <h1>{fullname}</h1>
         </div>
         <div className={styles['home-container3']}>
-          <button type="button" className={styles['btndbred']}>
+          <button type="button" className={styles['btndb']}>
             Delete profile
           </button>
-          <button type="button" className={styles['btndb']}>
+          <button type="button" className={styles['btndbred']}>
             Edit profile
           </button>
         </div>

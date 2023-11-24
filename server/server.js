@@ -1331,6 +1331,7 @@
                 role: "patient",
                 gender: "male",
                 fullname: "peter",
+                imageUrl: "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
                 createdAt: "2023-11-01T07:22:00.358Z",
     		},
     		"847ec027-f659-4086-8032-5173e2f9c93a": {
@@ -1346,6 +1347,7 @@
     			hashedPassword: "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302",
                 role: "doctor",
                 gender: "male",
+                imageUrl: "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
                 fullname: "admin",
                 createdAt: "2023-11-01T07:22:00.358Z",
     		}
@@ -1427,57 +1429,12 @@
     	},
     	sessions: {
     	},
-    	records: {
-    		i01: {
-    			name: "John1",
-    			val: 1,
-    			_createdOn: 1613551388703
+    	booking: {
+    		"35c62d76-8152-4626-8712-eeb96381bea8": {
+    			selectedDates: "2023-11-21T22:00:00.000Z",
+    			doctorId: "3",
+    			id: "88d06957-eea7-4df0-96be-ac703a7f945b",
     		},
-    		i02: {
-    			name: "John2",
-    			val: 1,
-    			_createdOn: 1613551388713
-    		},
-    		i03: {
-    			name: "John3",
-    			val: 2,
-    			_createdOn: 1613551388723
-    		},
-    		i04: {
-    			name: "John4",
-    			val: 2,
-    			_createdOn: 1613551388733
-    		},
-    		i05: {
-    			name: "John5",
-    			val: 2,
-    			_createdOn: 1613551388743
-    		},
-    		i06: {
-    			name: "John6",
-    			val: 3,
-    			_createdOn: 1613551388753
-    		},
-    		i07: {
-    			name: "John7",
-    			val: 3,
-    			_createdOn: 1613551388763
-    		},
-    		i08: {
-    			name: "John8",
-    			val: 2,
-    			_createdOn: 1613551388773
-    		},
-    		i09: {
-    			name: "John9",
-    			val: 3,
-    			_createdOn: 1613551388783
-    		},
-    		i10: {
-    			name: "John10",
-    			val: 1,
-    			_createdOn: 1613551388793
-    		}
     	},
     	catches: {
     		"07f260f4-466c-4607-9a33-f7273b24f1b4": {

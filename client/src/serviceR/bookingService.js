@@ -8,7 +8,7 @@ export const getAll = async (doctorId) => {
     const response = await fetch(baseUrl);
     const result = await response.json()
 
-    const data = Object.values(result).filter(selectedDates => selectedDates.doctorId === doctorId);
+    const data = Object.values(result);
 
     return data;
 };
