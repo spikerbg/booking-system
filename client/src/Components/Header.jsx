@@ -1,5 +1,4 @@
 import logo from "../../src/assets/images/logo.png";
-import userImg from "../assets/images/avatar-icon.png";
 import { Link, NavLink } from "react-router-dom";
 import { BiMenu } from "react-icons/bi";
 import { useRef } from "react";
