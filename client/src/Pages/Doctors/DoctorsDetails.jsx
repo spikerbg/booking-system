@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams,useNavigate } from "react-router-dom";
 import * as doctorService from "../../serviceR/doctorService";
 import starIcon from "../../assets/images/Star.png";
 import DoctorAbout from "./DoctorAbout.jsx";
@@ -8,12 +8,15 @@ import SidePanel from "./SidePanel.jsx";
 import { BookContext } from '../../Context/BookContext';
 import styles from '../../Components/style/doctordetails.module.css'
 import AuthContext from "../../Context/authContext";
+import DeleteDoctor from "./DeleteDoctor";
 
 const DoctorsDetails = ({}) => {
   const [doctor, setDoctor] = useState(null);
   const [tab, setTab] = useState("about");
   const { id } = useParams();
   const { userId } = useContext(AuthContext);
+  const [showDelete, setShowDelete] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchDoctor() {
@@ -31,9 +34,9 @@ const DoctorsDetails = ({}) => {
   
 
   if (!doctor) {
-    return <div>Loading...</div>; // Return a loading indicator if data is not yet available
+    return <div>Loading...</div>; // da se pokaje kogato nqma lekari
   }
-
+ const doctorId = doctor.id
   const {
     name,
     specialty,
@@ -41,7 +44,20 @@ const DoctorsDetails = ({}) => {
     photo,
     short,
   } = doctor;
+  const deleteUserClickHandler = (id) => {
+    setDoctor(id);
+    setShowDelete(true);
+}
+const deleteUserHandler = async () => {
+  try {
+    await doctorService.remove(id);
+  } catch (error) {
+    console.error("Error deleting user:", error);
+  }
+  navigate('/')
+};
   
+
 
   return (
     <section>
@@ -78,8 +94,9 @@ const DoctorsDetails = ({}) => {
             </div>
             {userId === doctor._ownerId && (
                 <div className="mt-5 gap-2 flex">
-                    <Link to="/doctors/:id/edit" className="px-3 py-2 text-xs font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300">Edit</Link>
-                    <Link to="/doctors/:id/delete" className="px-3 py-2 text-xs font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300">Delete</Link>
+                    <Link to={`/edit-doctor/${doctor.id}`} className="px-3 py-2 text-xs font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300">Edit</Link>
+                    <button className="px-3 py-2 text-xs font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300"  onClick={deleteUserClickHandler}>Delete</button>
+                   
                 </div>
                 )}
             <div className="mt-[50px] border-b border-solid border-[#0066ff34]">
@@ -89,7 +106,7 @@ const DoctorsDetails = ({}) => {
                   tab === "about" && `border-b border-solid border-primaryColor`
                 } py-2 px-5 mr-5 text-[16px] leading-7 text-headingColor font-semibold`}
               >
-                About
+                About 
               </button>
               <button
                 onClick={() => setTab("feedback")}
@@ -107,6 +124,10 @@ const DoctorsDetails = ({}) => {
               {tab === "feedback" && <Feedback doctor={doctor} doctorId={id} />}
             </div>
           </div>
+          {showDelete && (<DeleteDoctor
+                    onClose={() => setShowDelete(false)}
+                    onDelete={deleteUserHandler}
+                />)}
           <BookContext.Provider value={id}>
           <SidePanel />
           </BookContext.Provider>
