@@ -1,12 +1,13 @@
 
+
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 import styles from '../Components/style/login.module.css'
 import useForm from "../Hooks/useForm";
 import AuthContext  from "../Context/authContext";
-import { ToastContainer,toast } from 'react-toastify';
 import { useContext }  from "react";
+import { ToastContainer, toast } from 'react-toastify';
 
 const LoginFormKyes = {
   Email: 'email',
@@ -16,11 +17,24 @@ const LoginFormKyes = {
 const Login = () => {
   
   const { loginSubmitHandler } = useContext(AuthContext);
-    const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
+    const [values, setValues] = useState({
         [LoginFormKyes.Email]: '',
         [LoginFormKyes.Password]: '',
     });
 
+    const onChange = (e) => {
+      setValues((prevValues) => ({
+        ...prevValues,
+        [e.target.name]: e.target.value,
+      }));
+    };
+  
+    const onSubmit = (e) => {
+      e.preventDefault();
+
+    loginSubmitHandler(values)
+    }
+   
   
   return (
     <section className={styles['mainselection']}>
@@ -58,6 +72,7 @@ const Login = () => {
             >
               Login
             </button>
+            <ToastContainer />
             {/* {error && <span>Wrong email or password</span>} */}
           </div>
         </form>
@@ -68,9 +83,9 @@ const Login = () => {
           </Link>
         </p>
       </div>
-          <ToastContainer />
     </section>
   );
 };
 
 export default Login;
+

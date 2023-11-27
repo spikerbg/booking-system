@@ -1,9 +1,11 @@
+
+
 import signupImg from "../assets/images/signup.gif";
 import { Link, useNavigate } from "react-router-dom";
 import avatar from "../assets/images/patient-avatar.png";
 import { ToastContainer, toast } from 'react-toastify';
 import styles from '../Components/style/Signup.module.css'
-import { useContext } from "react";
+import { useContext, useState} from "react";
 import AuthContext from "../Context/authContext";
 import useForm from "../Hooks/useForm";
 // import 'react-toastify/dist/ReactToastify.css';
@@ -43,15 +45,34 @@ const Signup = () => {
   
   
     
-    const {registerSubmitHandler} = useContext(AuthContext)
-    const {values, onChange, onSubmit} = useForm(registerSubmitHandler,{
-      email: '',
-      password: '',
-      fullname: '',
-      role: '',
-      gender: '',
-      imageUrl: '',
-    })
+  const { registerSubmitHandler } = useContext(AuthContext);
+  const [values, setValues] = useState({
+    email: '',
+    password: '',
+    fullname: '',
+    role: '',
+    gender: '',
+    imageUrl: '',
+  });
+
+  const notify = () => {
+    // Add your toast notification logic here
+  };
+
+  const onChange = (e) => {
+    setValues((prevValues) => ({
+      ...prevValues,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    // Assuming submitHandler is a function that should be called with values
+    registerSubmitHandler(values);
+  }
+
 
   return (
     <section className="px-5 xl:px-0">
@@ -161,7 +182,7 @@ const Signup = () => {
                 <button
                   type="submit"
                   className="w-full bg-primaryColor text-white text-[18px] leading-[30px] rounded-lg py-3"
-                
+                  // onClick={notify}
                 >
                   Signup
                 </button>
@@ -185,3 +206,4 @@ const Signup = () => {
 
 
 export default Signup;
+
