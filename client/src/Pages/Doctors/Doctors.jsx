@@ -14,7 +14,7 @@ const Doctors = () => {
     doctorService.getAll()
     .then((result) => {
       setDoctors(result);
-      setFilteredDoctors(result); // Initialize filtered doctors with all doctors
+      setFilteredDoctors(result); // pokazvam swichki lekari
     })
     .catch((err) => console.log(err));
 }, []);
@@ -23,7 +23,7 @@ const handleSearchChange = (e) => {
   const query = e.target.value;
   setSearchQuery(query);
 
-  // Filter doctors based on the search query
+  // filtriram doctorite na bazata na search query
   const filtered = doctors.filter((doctor) =>
     doctor.name.toLowerCase().includes(query.toLowerCase())
   );

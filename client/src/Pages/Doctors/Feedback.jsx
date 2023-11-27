@@ -12,7 +12,7 @@ const Feedback = ({ doctor }) => {
   const { id,doctorId, totalRating } = doctor;
 
   useEffect(() => {
-    // Fetch reviews for the specific doctor
+    // vzimam revuto za vseki edin doktor spored idto
     reviewsService.getAll(id)
       .then((result) => {
         setReviews(result);
@@ -22,7 +22,7 @@ const Feedback = ({ doctor }) => {
  
   const handleSubmitReview = async (formData) => {
     try {
-      // Create new review
+      // dabavqne na now feedback
       const newComment = await reviewsService.create({
         id: formData.get("id"),
         doctorId: formData.get("doctorId"),
@@ -31,10 +31,10 @@ const Feedback = ({ doctor }) => {
         reviewtext: formData.get("reviewtext"),
       });
   
-      // Add the newly created review to the local state
+      // prezarejdane na steita s nowiq feedback
       setReviews((prevReviews) => [...prevReviews, newComment]);
       
-      // Close the feedback form
+      // kogato feedback e populen formata se zatwarq
       setFeedbackForm(false);
     } catch (error) {
       console.error("Error submitting review:", error);

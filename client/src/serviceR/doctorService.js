@@ -1,5 +1,6 @@
 const baseUrl = 'http://localhost:3030/data/doctors';
 import * as reviewsService from "./reviewsService";
+import * as request from '../utils/request'
 
 export const getAll = async () => {
     const response = await fetch(baseUrl);
@@ -77,18 +78,20 @@ export const create = async (data) => {
     return result;
 };
 
-export const remove = async (userId) => {
-    const response = await fetch(`${baseUrl}/${userId}`, {
-        method: 'DELETE'
-    });
+// export const remove = async (userId) => {
+//     const response = await fetch(`${baseUrl}/${userId}`, {
+//         method: 'DELETE'
+//     });
 
-    const result = await response.json();
+//     const result = await response.json();
 
-    return result;
-};
+//     return result;
+// };
 
 export const edit = async (doctorId, data) => {
     const result = await request.put(`${baseUrl}/${doctorId}`, data);
 
     return result;
 };
+
+export const remove = async (id) => request.remove(`${baseUrl}/${id}`);

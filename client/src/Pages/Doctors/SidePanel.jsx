@@ -20,7 +20,7 @@ const SidePanel = () => {
     const handleChange = async (e) => {
       setSelectedDates(e);
     
-      // Assuming you want to send the selected dates in the request body
+      // izprashtam dannite prez post zaqwka kum survura
       const data = {
         selectedDates: e,
         doctorId,

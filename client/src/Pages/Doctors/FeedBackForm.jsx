@@ -6,7 +6,7 @@ const FeedBackForm = ({ doctor, onSubmit  }) => {
   const [rating, setRating] = useState([]);
   const [hover, sethover] = useState(0);
   const [reviewtext, setReviewText] = useState("");
-  const { id, name, username,doctorId /* other properties */ } = doctor;
+  const { id } = doctor;
   const handleSubmitForm = async (e) => {
     e.preventDefault();
   

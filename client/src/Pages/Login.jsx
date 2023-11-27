@@ -1,7 +1,6 @@
 
 
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import styles from '../Components/style/login.module.css'
 import useForm from "../Hooks/useForm";
