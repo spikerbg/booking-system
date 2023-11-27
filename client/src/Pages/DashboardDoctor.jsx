@@ -19,39 +19,23 @@ export default function DashboardDoctor() {
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState([]);
   const [booking, setBooking] = useState([])
-  const [selectedUser, setSelectedUser] = useState(null);
   const [showCreate, setShowCreate] = useState(false);
-  const { userId } = useContext(AuthContext);
   // const [doctor, setDoctor] = useState([]);
 
   //fechwam usera
-  useEffect(() => {
-    async function fetchUser() {
-      try {
-        const selectedUser = await authService.getOne(id);
-        setUser(selectedUser);
-      } catch (error) {
-        // Handle error, e.g., display an error message
-        console.error("Error fetching doctor data:", error);
-      }
-    }
-
-    fetchUser();
-  }, [id]);
-
   // useEffect(() => {
-  //   // Fetch doctor data here
-  //   async function fetchDoctor() {
+  //   async function fetchUser() {
   //     try {
-  //       const selectedDoctor = await doctorService.getAll(id);
-  //       setDoctor(selectedDoctor);
+  //       const selectedUser = await authService.getOne(userId);
+  //       setUser([selectedUser]); // Wrap the user in an array
   //     } catch (error) {
   //       console.error("Error fetching doctor data:", error);
   //     }
   //   }
-
-  //   fetchDoctor();
+  
+  //   fetchUser();
   // }, [id]);
+
 
 //fechwam booking zaqwkata
   useEffect(() => {
@@ -104,6 +88,7 @@ const doctorCreateHandler = async (e) => {
     fullname,
     role,
     gender,
+    userId,
     createdAt,
     imageUrl,
 } = useContext(AuthContext);
@@ -129,7 +114,7 @@ const doctorCreateHandler = async (e) => {
           </button>
           <button type="button" className="block rounded-md mr-2 bg-green-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
           >
-           <Link to="/edit-user/:userId"> Edit profile </Link>
+           <Link to={`/edit-user/${userId}`}> Edit profile </Link>
           </button>
           <button type="button" className="block rounded-md mr-2 bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           onClick={createDoctorClickHandler}>
@@ -149,6 +134,12 @@ const doctorCreateHandler = async (e) => {
 
           <span>Gender: {gender}</span>
 
+          {user.map((users, userId) => (
+  <ul key={userId}>
+    <li>Date: {users.email}</li>
+    <li>Doctor Id: {users.role}</li>
+  </ul>
+))}
           <span>Create At:{formatDate(createdAt)}</span>
 
 
