@@ -13,7 +13,7 @@ const DoctorsDetails = ({}) => {
   const [doctor, setDoctor] = useState(null);
   const [tab, setTab] = useState("about");
   const { id } = useParams();
-  const { email, userId } = useContext(AuthContext);
+  const { userId } = useContext(AuthContext);
 
   useEffect(() => {
     async function fetchDoctor() {

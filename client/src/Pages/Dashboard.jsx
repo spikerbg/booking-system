@@ -34,7 +34,6 @@ export default function Dashboard({}) {
 
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   
   useEffect(() => {

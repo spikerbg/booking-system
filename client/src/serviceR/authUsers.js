@@ -94,4 +94,14 @@ export const getAll = async () => {
   
     return result;
   };
+
+  export const update = async (userId, data) => {
+    try {
+      const result = await request.put(`${baseUrl}/${userId}`, data);
+      return result;
+    } catch (error) {
+      console.error('Update failed:', error.message);
+      throw error;
+    }
+  };
   

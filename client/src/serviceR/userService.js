@@ -15,6 +15,7 @@ export const getOne = async (userId) => {
 
     return result;
 };
+const token = localStorage.getItem('accessToken')
 
 export const create = async (data) => {
     const body = {
@@ -33,6 +34,7 @@ export const create = async (data) => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            'X-Authorization' : token,
         },
         body: JSON.stringify(body),
     })

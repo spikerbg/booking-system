@@ -10,6 +10,8 @@ import Dashboard from "../Pages/Dashboard";
 import AdminDashboardSet from "../Pages/AdminDashboardSet";
 import DashboardDoctor from "../Pages/DashboardDoctor";
 import Logout from "../Pages/Logout";
+import EditDoctorModal from "../Pages/EditDoctorModal"
+import PrivateRoutes from "./PrivateRoute";
 
 
 const Routers = () => {
@@ -25,9 +27,13 @@ const Routers = () => {
       <Route path="/contact" element={<Contact />} />
       <Route path="/services" element={<Services services={Services} />} />
       <Route path="/contactus" element={<Contact />} />
-      <Route  path="/dashboard/:id" element={<Dashboard />} />
-      <Route  path="/admdash" element={<AdminDashboardSet />} />
-      <Route  path="/dashboarddoctor/:id" element={<DashboardDoctor />} />
+      <Route path="/edit-user/:userId" element={<EditDoctorModal />} />
+      <Route element={<PrivateRoutes />}>
+                <Route element={<Home/>} path="/" exact/>
+                <Route element={<DashboardDoctor/>} path="/dashboarddoctor/:id"/>
+                <Route  path="/dashboard/:id" element={<Dashboard />} />
+                <Route  path="/admdash" element={<AdminDashboardSet />} />
+            </Route>
       <Route  path="/logout" element={<Logout />} />
     </Routes>
   );

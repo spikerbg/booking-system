@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import React from "react"; // Fix the import statement for React
 import { formatDate } from "../utils/dataUtils";
 import * as doctorService from "../serviceR/doctorService"
@@ -21,8 +21,10 @@ export default function DashboardDoctor() {
   const [booking, setBooking] = useState([])
   const [selectedUser, setSelectedUser] = useState(null);
   const [showCreate, setShowCreate] = useState(false);
+  const { userId } = useContext(AuthContext);
+  // const [doctor, setDoctor] = useState([]);
 
-  
+  //fechwam usera
   useEffect(() => {
     async function fetchUser() {
       try {
@@ -37,6 +39,21 @@ export default function DashboardDoctor() {
     fetchUser();
   }, [id]);
 
+  // useEffect(() => {
+  //   // Fetch doctor data here
+  //   async function fetchDoctor() {
+  //     try {
+  //       const selectedDoctor = await doctorService.getAll(id);
+  //       setDoctor(selectedDoctor);
+  //     } catch (error) {
+  //       console.error("Error fetching doctor data:", error);
+  //     }
+  //   }
+
+  //   fetchDoctor();
+  // }, [id]);
+
+//fechwam booking zaqwkata
   useEffect(() => {
 
     bookingService.getAll()
@@ -72,6 +89,7 @@ const doctorCreateHandler = async (e) => {
     position: toast.POSITION.TOP_RIGHT,
   })
 };
+
 
   // useEffect(() => {
   //   setIsLoading(true);
@@ -109,8 +127,9 @@ const doctorCreateHandler = async (e) => {
           <button type="button" className="block rounded-md mr-2 bg-red-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">
             Delete profile
           </button>
-          <button type="button" className="block rounded-md mr-2 bg-green-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">
-            Edit profile
+          <button type="button" className="block rounded-md mr-2 bg-green-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
+          >
+           <Link to="/edit-user/:userId"> Edit profile </Link>
           </button>
           <button type="button" className="block rounded-md mr-2 bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           onClick={createDoctorClickHandler}>
@@ -152,6 +171,7 @@ const doctorCreateHandler = async (e) => {
                     onCreate={doctorCreateHandler}
                 />
             )}
+            
       </div>
       <ToastContainer />
     </div>
