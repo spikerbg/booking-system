@@ -4,12 +4,32 @@ import * as request from '../utils/request'
 
 export const getAll = async () => {
     const response = await fetch(baseUrl);
-    const result = await response.json();
+        const result = await response.json();
 
-    const data = Object.values(result);
+        const doctors = Object.values(result);
 
-    return data;
-};
+        // Fetch and calculate average and total rating for each doctor
+        const doctorsWithRating = await Promise.all(
+            doctors.map(async (doctor) => {
+                const reviews = await reviewsService.getAll(doctor.id);
+
+                const averageRating =
+                    reviews.length > 0
+                        ? reviews.reduce((sum, review) => sum + parseInt(review.rating, 10), 0) / reviews.length
+                        : 0;
+
+                const totalRating = reviews.reduce((sum, review) => sum + parseInt(review.empty, 10), 0);
+
+                return {
+                    ...doctor,
+                    averageRating,
+                    totalRating,
+                };
+            })
+        );
+
+        return doctorsWithRating;
+}
 
 export const getOne = async (userId) => {
     const response = await fetch(`${baseUrl}/${userId}`);
@@ -21,7 +41,7 @@ export const getOne = async (userId) => {
     const averageRating =
     reviews.reduce((sum, review) => sum + parseInt(review.rating, 0) ,0) / reviews.length;
 
-    const totalRating = reviews.reduce((sum, review) => sum + parseInt(review.rating, 10), 0);
+    const totalRating = reviews.reduce((sum, review) => sum + parseInt(review.empty, 10), 0);
 
 
     // Include averageRating and totalRating in the result

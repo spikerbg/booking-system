@@ -29,6 +29,7 @@ export const create = async (data) => {
         review: data.review,
         username: data.username,
         photo: data.photo,
+        empty:data.empty,
         reviewtext: data.reviewtext,
         date: new Date().toISOString(),
     };

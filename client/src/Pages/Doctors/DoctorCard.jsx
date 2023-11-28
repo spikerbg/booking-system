@@ -34,10 +34,10 @@ const DoctorCard = ({ doctor }) => {
         <div className="flex items-center gap-[6px]">
           <span className="flex items-center font-[700] text-headingColor gap-[6px] text-[14px] lg:text-[16px] leading-6 lg:leading-7 ">
             <img src={starIcon} alt="" />
-            {avgRating}{" "}
+            {averageRating}
           </span>
           <span className="text-[14px] leading-6 lg:text-[16px] lg:leading-7 font-[400] text-textColor">
-            ({totalRating})
+            ({doctor.totalRating})
           </span>
         </div>
       </div>

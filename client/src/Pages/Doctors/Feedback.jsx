@@ -29,6 +29,7 @@ const Feedback = ({ doctor }) => {
         username: formData.get("username"),
         rating: formData.get("rating"),
         reviewtext: formData.get("reviewtext"),
+        empty: formData.get("empty")
       });
   
       // prezarejdane na steita s nowiq feedback
