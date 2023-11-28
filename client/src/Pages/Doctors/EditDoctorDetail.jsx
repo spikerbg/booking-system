@@ -2,8 +2,9 @@ import styles from "../../Components/style/createdoctor.module.css"
 import { useNavigate, useParams } from 'react-router-dom';
 
 import * as doctorService from '../../serviceR/doctorService';
-import { useEffect, useState } from 'react';
+import { useEffect, useState} from 'react';
 export default function EditDoctorModal(){
+
     const { id } = useParams();
     const navigate = useNavigate();
     const [doctor, setDoctor] = useState({
@@ -19,11 +20,12 @@ export default function EditDoctorModal(){
     });
 
     useEffect(() => {
-        doctorService.getOne(id)
+        doctorService.getOne(userId)
             .then(result => {
                 setDoctor(result);
             });
-    }, [id]);
+            
+    }, [userId]);
 
 
     const editDoctorHandler = async (e) =>{
@@ -98,7 +100,7 @@ export default function EditDoctorModal(){
                     
                         <div id="form-actions">
                             <button id="action-save" className={styles['btnsave']}>Save</button>
-                            <button id="action-cancel" className={styles['btncencel']} type="button">
+                         <button id="action-cancel" className={styles['btncencel']} type="button">
                                 Cancel
                             </button>
                         </div>
