@@ -16,7 +16,7 @@ export default function EditUserDoctor(){
 
 
     })
-    const userId = id
+
 
     useEffect(() =>{
         userService.getOne(id)

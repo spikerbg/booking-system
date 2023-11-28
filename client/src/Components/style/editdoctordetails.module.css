@@ -1,0 +1,48 @@
+.btnsave{
+    padding: 0.625rem 1.25rem; 
+    font-size: 0.875rem; 
+    margin-top: 2.5rem; 
+    margin-right: 0.625rem; 
+    font-weight: 500; 
+    color: #ffffff; 
+    background-color: #059118;
+    border-radius: 0.375rem; 
+    text-align: center; 
+    cursor: pointer;
+    outline: none; 
+}
+.btnsave:hover,
+.btnsave:focus {
+  background-color: #047857; 
+  box-shadow: 0 0 0 0.25rem #80ca8a; 
+}
+
+.form{
+  width: 950px;
+  padding: 20px;
+  border-radius: 30px;
+  border-top: 5px solid #f18a00;
+  margin: 40px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+.btncencel{
+        padding: 0.625rem 1.25rem; 
+        font-size: 0.875rem; 
+        margin-top: 2.5rem; 
+        margin-right: 0.625rem; 
+        font-weight: 500; 
+        color: #ffffff; 
+        background-color: rgb(13, 61, 150) !important; 
+        border-radius: 0.375rem; 
+        text-align: center; 
+        cursor: pointer;
+        outline: none; 
+}
+      
+      .btncencel:hover,
+      .btncencel:focus {
+        background-color: #1D4ED8; /* Equivalent to hover:bg-blue-800 */
+        box-shadow: 0 0 0 0.25rem #60a5fa; /* Equivalent to focus:ring-4 and focus:ring-blue-300 */
+      }
+

@@ -1,5 +1,6 @@
-import styles from "../../Components/style/createdoctor.module.css"
+import styles from "../../Components/style/editdoctordetails.module.css"
 import { useNavigate, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import * as doctorService from '../../serviceR/doctorService';
 import { useEffect, useState} from 'react';
@@ -20,12 +21,12 @@ export default function EditDoctorModal(){
     });
 
     useEffect(() => {
-        doctorService.getOne(userId)
+        doctorService.getOne(id)
             .then(result => {
                 setDoctor(result);
             });
             
-    }, [userId]);
+    }, [id]);
 
 
     const editDoctorHandler = async (e) =>{
@@ -53,8 +54,8 @@ export default function EditDoctorModal(){
         }));
     };
     return(
-        <div className="min-w-[50%] flex justify-center">
-        <form onSubmit={editDoctorHandler}>
+        <div className="flex justify-center ">
+        <form onSubmit={editDoctorHandler} className={styles['form']}>
                     <div>
                         <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Full name</label>
                         <input type="name" name="name" id="name" value={doctor.name} onChange={onChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Ivan Ivanov" />
@@ -100,9 +101,10 @@ export default function EditDoctorModal(){
                     
                         <div id="form-actions">
                             <button id="action-save" className={styles['btnsave']}>Save</button>
-                         <button id="action-cancel" className={styles['btncencel']} type="button">
+                         <Link to={`/doctors/${doctor.id}`}><button id="action-cancel" className={styles['btncencel']} type="button">
                                 Cancel
                             </button>
+                            </Link>
                         </div>
                     </form>
                     </div>
