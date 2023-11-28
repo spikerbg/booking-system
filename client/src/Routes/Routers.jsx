@@ -10,7 +10,7 @@ import Dashboard from "../Pages/Dashboard";
 import AdminDashboardSet from "../Pages/AdminDashboardSet";
 import DashboardDoctor from "../Pages/DashboardDoctor";
 import Logout from "../Pages/Logout";
-import EditDoctorModal from "../Pages/EditDoctorModal"
+import EditDoctorModal from "../Pages/EditUserDoctor"
 import PrivateRoutes from "./PrivateRoute";
 import EditDoctorDetail from "../Pages/Doctors/EditDoctorDetail"
 
@@ -28,7 +28,7 @@ const Routers = () => {
       <Route path="/contact" element={<Contact />} />
       <Route path="/services" element={<Services services={Services} />} />
       <Route path="/contactus" element={<Contact />} />
-      <Route path="/edit-user/:userId" element={<EditDoctorModal />} />
+      <Route path="/edit-user/:id" element={<EditDoctorModal />} />
       <Route path="/edit-doctor/:id" element={<EditDoctorDetail />} />
       <Route element={<PrivateRoutes />}>
                 <Route element={<Home/>} path="/" exact/>
