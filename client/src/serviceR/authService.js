@@ -35,8 +35,15 @@ export const register = async (email, password, fullname, role, gender, imageUrl
 
   export const getOne = async (userId) =>{
     const result = await request.get(`${baseUrl}/${userId}`)
+    console.log(result); // Add this line
     return result
 }
+
+export const edit = async (userId, data) => {
+  const result = await request.put(`${baseUrl}/${userId}`, data);
+
+  return result;
+};
 
 export const getAll = async () => {
   const result = await request.get(baseUrl)

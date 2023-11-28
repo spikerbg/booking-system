@@ -18,6 +18,17 @@
       "streetNumber": "26"
     }
   },
+  "60f0cf0b-34b0-4abd-9769-8c42f830dffc": {
+    "id": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+"email": "admin@abv.bg",
+"username": "Admin",
+"hashedPassword": "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302",
+    "role": "doctor",
+    "gender": "male",
+    "imageUrl": "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
+    "fullname": "admin",
+    "createdAt": "2023-11-01T07:22:00.358Z"
+},
   "bdabf5e9-23be-40a1-9f14-9117b6702a9d": {
     "_id": "bdabf5e9-23be-40a1-9f14-9117b6702a9d",
     "firstName": "Another",
@@ -37,6 +48,7 @@
       "streetNumber": "5"
     }
   },
+  
   "7b3143e1-d6df-4e67-bd7e-5f8b03f2fd3f": {
     "_id": "7b3143e1-d6df-4e67-bd7e-5f8b03f2fd3f",
     "firstName": "John",
