@@ -416,6 +416,8 @@
 
     const userService = new Service_1();
     userService.get('users', getUsers);
+    userService.post('users', actions.post);
+    userService.put('users', actions.put);
     userService.get('me', getSelf);
     userService.post('register', onRegister);
     userService.post('login', onLogin);
@@ -734,6 +736,7 @@
     dataService$1.put(':collection', crud.put);
     dataService$1.patch(':collection', crud.patch);
     dataService$1.delete(':collection', crud.delete);
+    
 
     var data$1 = dataService$1.parseRequest;
 
@@ -1012,6 +1015,191 @@
 
         return { get, add, set, merge, delete: del, query };
     }
+
+    //***test */
+     /**
+     * Create storage instance and populate with seed data
+     * @param {Object=} protectedData Associative array with data. Each property is an object with properties in format {key: value}
+     */
+     function createInstance(protectedData = {}) {
+        const collections = new Map();
+
+        // Initialize seed data from file    
+        for (let collectionName in protectedData) {
+            if (protectedData.hasOwnProperty(collectionName)) {
+                const collection = new Map();
+                for (let recordId in protectedData[collectionName]) {
+                    if (protectedData.hasOwnProperty(collectionName)) {
+                        collection.set(recordId, protectedData[collectionName][recordId]);
+                    }
+                }
+                collections.set(collectionName, collection);
+            }
+        }
+
+
+        // Manipulation
+
+        /**
+         * Get entry by ID or list of all entries from collection or list of all collections
+         * @param {string=} collection Name of collection to access. Throws error if not found. If omitted, returns list of all collections.
+         * @param {number|string=} id ID of requested entry. Throws error if not found. If omitted, returns of list all entries in collection.
+         * @return {Object} Matching entry.
+         */
+        function get(collection, id) {
+            if (!collection) {
+                return [...collections.keys()];
+            }
+            if (!collections.has(collection)) {
+                throw new ReferenceError('Collection does not exist: ' + collection);
+            }
+            const targetCollection = collections.get(collection);
+            if (!id) {
+                const entries = [...targetCollection.entries()];
+                let result = entries.map(([k, v]) => {
+                    return Object.assign(deepCopy(v), { id: k });
+                });
+                return result;
+            }
+            if (!targetCollection.has(id)) {
+                throw new ReferenceError('Entry does not exist: ' + id);
+            }
+            const entry = targetCollection.get(id);
+            return Object.assign(deepCopy(entry), { id: id });
+        }
+
+        /**
+         * Add new entry to collection. ID will be auto-generated
+         * @param {string} collection Name of collection to access. If the collection does not exist, it will be created.
+         * @param {Object} data Value to store.
+         * @return {Object} Original value with resulting ID under id property.
+         */
+        function add(collection, data) {
+            const record = assignClean({ _ownerId: data._ownerId }, data);
+
+            let targetCollection = collections.get(collection);
+            if (!targetCollection) {
+                targetCollection = new Map();
+                collections.set(collection, targetCollection);
+            }
+            let id = uuid$2();
+            // Make sure new ID does not match existing value
+            while (targetCollection.has(id)) {
+                id = uuid$2();
+            }
+
+            record._createdOn = Date.now();
+            targetCollection.set(id, record);
+            return Object.assign(deepCopy(record), { id: id });
+        }
+
+        /**
+         * Replace entry by ID
+         * @param {string} collection Name of collection to access. Throws error if not found.
+         * @param {number|string} id ID of entry to update. Throws error if not found.
+         * @param {Object} data Value to store. Record will be replaced!
+         * @return {Object} Updated entry.
+         */
+        function set(collection, id, data) {
+            if (!collections.has(collection)) {
+                throw new ReferenceError('Collection does not exist: ' + collection);
+            }
+            const targetCollection = collections.get(collection);
+            if (!targetCollection.has(id)) {
+                throw new ReferenceError('Entry does not exist: ' + id);
+            }
+
+            const existing = targetCollection.get(id);
+            const record = assignSystemProps(deepCopy(data), existing);
+            record._updatedOn = Date.now();
+            targetCollection.set(id, record);
+            return Object.assign(deepCopy(record), { id: id });
+        }
+
+        /**
+         * Modify entry by ID
+         * @param {string} collection Name of collection to access. Throws error if not found.
+         * @param {number|string} id ID of entry to update. Throws error if not found.
+         * @param {Object} data Value to store. Shallow merge will be performed!
+         * @return {Object} Updated entry.
+         */
+         function merge(collection, id, data) {
+            if (!collections.has(collection)) {
+                throw new ReferenceError('Collection does not exist: ' + collection);
+            }
+            const targetCollection = collections.get(collection);
+            if (!targetCollection.has(id)) {
+                throw new ReferenceError('Entry does not exist: ' + id);
+            }
+
+            const existing = deepCopy(targetCollection.get(id));
+            const record = assignClean(existing, data);
+            record._updatedOn = Date.now();
+            targetCollection.set(id, record);
+            return Object.assign(deepCopy(record), { id: id });
+        }
+
+        /**
+         * Delete entry by ID
+         * @param {string} collection Name of collection to access. Throws error if not found.
+         * @param {number|string} id ID of entry to update. Throws error if not found.
+         * @return {{_deletedOn: number}} Server time of deletion.
+         */
+        function del(collection, id) {
+            if (!collections.has(collection)) {
+                throw new ReferenceError('Collection does not exist: ' + collection);
+            }
+            const targetCollection = collections.get(collection);
+            if (!targetCollection.has(id)) {
+                throw new ReferenceError('Entry does not exist: ' + id);
+            }
+            targetCollection.delete(id);
+
+            return { _deletedOn: Date.now() };
+        }
+
+        /**
+         * Search in collection by query object
+         * @param {string} collection Name of collection to access. Throws error if not found.
+         * @param {Object} query Query object. Format {prop: value}.
+         * @return {Object[]} Array of matching entries.
+         */
+        function query(collection, query) {
+            if (!collections.has(collection)) {
+                throw new ReferenceError('Collection does not exist: ' + collection);
+            }
+            const targetCollection = collections.get(collection);
+            const result = [];
+            // Iterate entries of target collection and compare each property with the given query
+            for (let [key, entry] of [...targetCollection.entries()]) {
+                let match = true;
+                for (let prop in entry) {
+                    if (query.hasOwnProperty(prop)) {
+                        const targetValue = query[prop];
+                        // Perform lowercase search, if value is string
+                        if (typeof targetValue === 'string' && typeof entry[prop] === 'string') {
+                            if (targetValue.toLocaleLowerCase() !== entry[prop].toLocaleLowerCase()) {
+                                match = false;
+                                break;
+                            }
+                        } else if (targetValue != entry[prop]) {
+                            match = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (match) {
+                    result.push(Object.assign(deepCopy(entry), { id: key }));
+                }
+            }
+
+            return result;
+        }
+
+        return { get, add, set, merge, delete: del, query };
+    }
+    //***test */
 
 
     function assignSystemProps(target, entry, ...rest) {
@@ -1650,12 +1838,12 @@
     };
     var rules$1 = {
     	users: {
-    		".create": false,
+    		".create": true,
     		".read": [
     			"Owner"
     		],
-    		".update": false,
-    		".delete": false
+    		".update": true,
+    		".delete": true
     	},
     };
     var settings = {
