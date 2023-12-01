@@ -51,7 +51,7 @@ const SidePanel = () => {
       </div>
       <div className="mt-[30px]">
         <p className="text_para mt-0 font-semibold text-headingColor">
-          Available Time Slots:{doctorId}
+          Available Time Slots
         </p>
         <ul className="mt-3">
           <li className={styles['litag']}>
@@ -104,7 +104,7 @@ const SidePanel = () => {
       dateFnsOptions={{ weekStartsOn: 1 }}
       range={false}
     />
-      <button className="btn w-full px-2 rounded-md">Book Appointment</button>
+      {/* <button className="btn w-full px-2 rounded-md">Book Appointment</button> */}
     </div>
   );
 };

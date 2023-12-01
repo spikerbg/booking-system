@@ -73,7 +73,6 @@ const doctorCreateHandler = async (e) => {
     createdAt,
     imageUrl,
 } = useContext(AuthContext);
-console.log(booking);
 
 
 
