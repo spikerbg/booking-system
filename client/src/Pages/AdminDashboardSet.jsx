@@ -26,7 +26,7 @@ export default function AdminDashboardSet(){
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const result = await authUsers.getAll();
+        const result = await userService.getAll();
         setUsers(result);
       } catch (error) {
         console.error("Error fetching users:", error);
@@ -81,7 +81,7 @@ export default function AdminDashboardSet(){
 
     const deleteUserHandler = async () => {
         // Remove user from server
-        await authService.deleteAccount(selectedUser);
+        await userService.remove(selectedUser);
 
         // Remove user from state
         setUsers(state => state.filter(user => user.id !== selectedUser));

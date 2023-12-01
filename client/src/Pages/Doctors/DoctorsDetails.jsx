@@ -40,10 +40,13 @@ const DoctorsDetails = ({}) => {
   const {
     name,
     specialty,
-    totalRating,
     photo,
     short,
   } = doctor;
+  const {
+    isAuthenticated,
+  } = useContext(AuthContext);
+  
   const deleteUserClickHandler = (id) => {
     setDoctor(id);
     setShowDelete(true);
@@ -92,7 +95,7 @@ const deleteUserHandler = async () => {
                 </p>
               </div>
             </div>
-            {userId === doctor._ownerId && (
+            {userId === doctor._ownerId && isAuthenticated &&(
                 <div className="mt-5 gap-2 flex">
                     <Link to={`/edit-doctor/${doctor.id}`} className="px-3 py-2 text-xs font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300">Edit</Link>
                     <button className="px-3 py-2 text-xs font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300"  onClick={deleteUserClickHandler}>Delete</button>
