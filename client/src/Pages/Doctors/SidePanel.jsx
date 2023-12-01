@@ -4,6 +4,7 @@ import { BookContext} from "../../Context/BookContext"
 import styles from "../../Components/style/sidepanel.module.css"
 
 
+
 const reserved = [
   {
     startDate: new Date(2023, 3, 22),

@@ -3,7 +3,6 @@ import { useParams, Link } from "react-router-dom";
 import React from "react"; // Fix the import statement for React
 import { formatDate } from "../utils/dataUtils";
 import * as doctorService from "../serviceR/doctorService"
-import * as authService from "../serviceR/authService";
 import CreateDoctorModal from "./CreateDoctorModal"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,30 +10,20 @@ import styles from "../Components/style/dashboarddoctor.module.css"
 import * as bookingService from "../serviceR/bookingService"
 import { useContext } from "react";
 import AuthContext from '../Context/authContext';
+import { Calendar, momentLocalizer } from 'react-big-calendar';
+
+import moment from 'moment-timezone';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 
 export default function DashboardDoctor() {
   const { id } = useParams();
-
+  const localizer = momentLocalizer(moment);
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState([]);
   const [booking, setBooking] = useState([])
   const [showCreate, setShowCreate] = useState(false);
-  // const [doctor, setDoctor] = useState([]);
 
-  //fechwam usera
-  // useEffect(() => {
-  //   async function fetchUser() {
-  //     try {
-  //       const selectedUser = await authService.getOne(userId);
-  //       setUser([selectedUser]); // Wrap the user in an array
-  //     } catch (error) {
-  //       console.error("Error fetching doctor data:", error);
-  //     }
-  //   }
-  
-  //   fetchUser();
-  // }, [id]);
 
 
 //fechwam booking zaqwkata
@@ -75,14 +64,6 @@ const doctorCreateHandler = async (e) => {
 };
 
 
-  // useEffect(() => {
-  //   setIsLoading(true);
-
-  //   userService.getAll()
-  //     .then(result => setUsers(result))
-  //     .catch(err => console.log(err))
-  //     .finally(() => setIsLoading(false));
-  // }, []);
   const {
     email,
     fullname,
@@ -92,7 +73,7 @@ const doctorCreateHandler = async (e) => {
     createdAt,
     imageUrl,
 } = useContext(AuthContext);
-
+console.log(booking);
 
 
 
@@ -134,22 +115,31 @@ const doctorCreateHandler = async (e) => {
 
           <span>Gender: {gender}</span>
 
-          {user.map((users, userId) => (
-  <ul key={userId}>
-    <li>Date: {users.email}</li>
-    <li>Doctor Id: {users.role}</li>
-  </ul>
-))}
+    
           <span>Create At:{formatDate(createdAt)}</span>
 
 
         </div>
         <div className={styles['home-container6']}>
           <h2>Booking</h2>
-          {booking.map((data,id) => (<ul key={id}>
-            <li >Date:{data.selectedDates}</li>
-            <li>Doctor Id:{data.doctorId}</li>
-          </ul>))}
+          {booking.length > 0 ? (
+            <Calendar
+            localizer={localizer}
+            events={booking.map(data => {
+              const startDate = new Date(data.selectedDates[0]);
+              const endDate = data.selectedDates[1] ? new Date(data.selectedDates[1]) : startDate; 
+              // console.log("Event:", { title: `Doctor ${data.doctorId}`, start: startDate, end: endDate });
+              return {
+                title: `Doctor ${data.doctorId}`,
+                start: startDate,
+                end: endDate,
+              };
+            })}
+            style={{ height: 500 }}
+          />
+) : (
+  <p>No events to display</p>
+)}
         </div>
       </div>
       <div>

@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
 
-import * as userService from '../serviceR/userService';
+import * as authService from '../serviceR/authService';
 import { useEffect, useState } from 'react';
 
 
@@ -19,7 +19,7 @@ export default function EditUserDoctor(){
 
 
     useEffect(() =>{
-        userService.getOne(id)
+        authService.getOne(id)
         .then(result =>{
             setUser(result);
             console.log(result)
@@ -31,9 +31,9 @@ export default function EditUserDoctor(){
         const values = Object.fromEntries(new FormData(e.currentTarget));
 
         try {
-            await userService.edit(id, values);
+            await authService.edit(id, values);
 
-            navigate('/doctors');
+            // navigate('/doctors');
         } catch (err) {
             // Error notification
             console.log(err);

@@ -34,13 +34,14 @@ export const register = async (email, password, fullname, role, gender, imageUrl
   export const logout = () => request.get(`${baseUrl}logout`)
 
   export const getOne = async (userId) =>{
-    const result = await request.get(`${baseUrl}/${userId}`)
-    console.log(result); // Add this line
+    const result = await request.get(`${baseUrl}${userId}`)
+    console.log(userId, "dsadsadsa"); // Add this line
     return result
 }
 
 export const edit = async (userId, data) => {
-  const result = await request.put(`${baseUrl}/${userId}`, data);
+  const result = await request.put(`${baseUrl}${userId}`, data);
+  console.log(data)
 
   return result;
 };

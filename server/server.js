@@ -449,7 +449,7 @@
         const users = context.protectedStorage.query('users', {})
         return users;
     }
-
+    module.exports = userService.parseRequest;
     var users = userService.parseRequest;
 
     const { NotFoundError: NotFoundError$1, RequestError: RequestError$1 } = errors;
