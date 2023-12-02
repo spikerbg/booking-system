@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "deploy": "npm run build && surge dist medrent.eu.surge.sh"
+    "deploy": "npm run build && npm run depfb ",
+    "depfb" : "firebase deploy"
   },
   "dependencies": {
     "@demark-pro/react-booking-calendar": "^3.0.5",

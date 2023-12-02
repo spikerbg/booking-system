@@ -54,7 +54,7 @@ const Signup = () => {
     gender: '',
     imageUrl: '',
   });
-
+  const [formError, setFormError] = useState(false);
   const notify = () => {
     // Add your toast notification logic here
   };
@@ -64,10 +64,17 @@ const Signup = () => {
       ...prevValues,
       [e.target.name]: e.target.value,
     }));
+    setFormError(false);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
+    // Perform your validation checks here
+    if (values.password.length < 4 || !values.email.includes('@') || values.email.split('@')[1].length < 3 || values.fullname.length < 6 ) {
+      // If validation fails, set formError to true
+      setFormError(true);
+      return;
+    }
 
     // Assuming submitHandler is a function that should be called with values
     registerSubmitHandler(values);
@@ -75,7 +82,7 @@ const Signup = () => {
 
 
   return (
-    <section className="px-5 xl:px-0">
+    <section className={`px-5 xl:px-0 ${formError ? 'bg-red-200' : ''}`} >
       <div className="max-w-[1170px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2">
           <div className="hidden lg:block bg-primaryColor rounded-l-lg">
@@ -83,7 +90,6 @@ const Signup = () => {
               <img src={signupImg} alt="" className="w-full rounded-l-lg" />
             </figure>
           </div>
-
           {/* Sign up form  */}
           <div className={styles['maindiv']}>
             <h3 className="text-headingColor text-[22px] leading-9 font-bold mb-10">
@@ -99,6 +105,7 @@ const Signup = () => {
                   className="w-full py-4 border-b border-solid border-[#006ff61] focus:outline-none focus:border-b-primaryColor text-[22px] leading-7 text-headingColor placeholder:text-textColor rounded-md cursor-pointer"
                   value={values.fullname}
                   onChange={onChange}
+                  minLength="6"
                   required
                 />
               </div>
@@ -110,6 +117,7 @@ const Signup = () => {
                   className="w-full py-4 border-b border-solid border-[#006ff61] focus:outline-none focus:border-b-primaryColor text-[22px] leading-7 text-headingColor placeholder:text-textColor rounded-md cursor-pointer"
                   value={values.email}
                   onChange={onChange}
+                  pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
                   required
                 />
               </div>
@@ -121,6 +129,7 @@ const Signup = () => {
                   className="w-full py-4 border-b border-solid border-[#006ff61] focus:outline-none focus:border-b-primaryColor text-[22px] leading-7 text-headingColor placeholder:text-textColor rounded-md cursor-pointer"
                   value={values.password}
                   onChange={onChange}
+                  minLength="4"
                   required
                 />
                 

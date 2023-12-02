@@ -20,16 +20,22 @@ const Login = () => {
         [LoginFormKyes.Email]: '',
         [LoginFormKyes.Password]: '',
     });
+    const [formError, setFormError] = useState(false);
 
     const onChange = (e) => {
       setValues((prevValues) => ({
         ...prevValues,
         [e.target.name]: e.target.value,
       }));
+      setFormError(false);
     };
   
     const onSubmit = (e) => {
       e.preventDefault();
+      if (!values[LoginFormKyes.Email].includes('@') || values[LoginFormKyes.Email].split('@')[1].length < 3 || values[LoginFormKyes.Password].length < 4) {
+        setFormError(true);
+        return;
+      }
 
     loginSubmitHandler(values)
     }
