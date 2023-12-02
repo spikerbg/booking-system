@@ -3,7 +3,6 @@ import { createContext} from "react";
 import * as authService from '../serviceR/authService'
 import { useNavigate } from 'react-router-dom';
 import usePersistedState from "../Hooks/usePersistedState";
-import * as authUsers from '../serviceR/authUsers'
 import { ToastContainer, toast } from 'react-toastify';
 
 

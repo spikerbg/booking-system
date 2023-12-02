@@ -31,7 +31,7 @@ const DoctorsDetails = ({}) => {
 
     fetchDoctor();
   }, [id]);
-  
+
 
   if (!doctor) {
     return <div>Loading...</div>; // da se pokaje kogato nqma lekari
@@ -58,6 +58,10 @@ const deleteUserHandler = async () => {
     console.error("Error deleting user:", error);
   }
   navigate('/')
+};
+const contextValue = {
+  doctorId: id,
+  ownerId: doctor._ownerId
 };
   
 
@@ -131,7 +135,7 @@ const deleteUserHandler = async () => {
                     onClose={() => setShowDelete(false)}
                     onDelete={deleteUserHandler}
                 />)}
-          <BookContext.Provider value={id}>
+          <BookContext.Provider value={contextValue}>
           <SidePanel />
           </BookContext.Provider>
         </div>

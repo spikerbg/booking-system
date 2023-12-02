@@ -8,33 +8,22 @@ import AuthContext from '../Context/authContext';
 import * as authService from "../serviceR/authService";
 import { useParams } from "react-router-dom";
 import { formatDate } from "../utils/dataUtils";
+import * as bookingService from "../serviceR/bookingService"
+import { Calendar, momentLocalizer } from 'react-big-calendar';
+import moment from 'moment-timezone';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 
 
 
-// export default function Dashboard() {
-//   const docRef = doc(db, "users", "2RO0texyblTVKZqbndNe");
-//   const [userData, setUserData] = useState(null); // Declare and initialize userData
 
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       const docSnap = await getDoc(docRef);
-//       if (docSnap.exists()) {
-//         const data = docSnap.data();
-//         setUserData(data); // Update the state with user data
-//       } else {
-//         console.log("No such document!");
-//       }
-//     };
-
-//     fetchData();
-//   }, []);
 export default function Dashboard({}) {
   const { id } = useParams();
-
+  const localizer = momentLocalizer(moment);
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
+  const [booking, setBooking] = useState([])
   
   useEffect(() => {
     async function fetchUser() {
@@ -50,15 +39,14 @@ export default function Dashboard({}) {
     fetchUser();
   }, [id]);
 
+  //fechwam booking zaqwkata
+useEffect(() => {
 
-  // useEffect(() => {
-  //   setIsLoading(true);
+  bookingService.getAll()
+      .then(result => setBooking(result))
+      .catch(err => console.log(err))
+}, []);
 
-  //   userService.getAll()
-  //     .then(result => setUsers(result))
-  //     .catch(err => console.log(err))
-  //     .finally(() => setIsLoading(false));
-  // }, []);
 
   const {
     email,
@@ -112,10 +100,24 @@ export default function Dashboard({}) {
         </div>
         <div className={styles['home-container6']}>
           <h2>Booking</h2>
-          <span></span>
-          <span>{user.firstName}</span>
-          <span>Text</span>
-          <span>Text</span>
+          {booking.length > 0 ? (
+            <Calendar
+            localizer={localizer}
+            events={booking.map(data => {
+              const startDate = new Date(data.selectedDates[0]);
+              const endDate = data.selectedDates[1] ? new Date(data.selectedDates[1]) : startDate; 
+              // console.log("Event:", { title: `Doctor ${data.doctorId}`, start: startDate, end: endDate });
+              return {
+                title: `Doctor ${data.doctorId}`,
+                start: startDate,
+                end: endDate,
+              };
+            })}
+            style={{ height: 500 }}
+          />
+) : (
+  <p>No booking to display</p>
+)}
         </div>
       </div>
     </div>

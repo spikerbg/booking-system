@@ -2,6 +2,7 @@ import React, { useState, useContext  } from "react";
 import Calendar from "@demark-pro/react-booking-calendar";
 import { BookContext} from "../../Context/BookContext"
 import styles from "../../Components/style/sidepanel.module.css"
+import AuthContext from "../../Context/authContext"
 
 
 
@@ -16,15 +17,23 @@ const reserved = [
 
 const SidePanel = () => {
 
-  const doctorId = useContext(BookContext);
+  const {doctorId, ownerId }= useContext(BookContext);
+  const { isAuthenticated } = useContext(AuthContext);
     const [selectedDates, setSelectedDates] = useState([]);
     const handleChange = async (e) => {
+      if (!isAuthenticated) {
+        // If user is not authenticated, prevent booking
+        alert("Please log in to book appointments.");
+        return;
+      }
+  
       setSelectedDates(e);
     
       // izprashtam dannite prez post zaqwka kum survura
       const data = {
         selectedDates: e,
         doctorId,
+        ownerId,
       };
     
 

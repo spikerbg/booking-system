@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext} from "react";
 import { useParams, Link } from "react-router-dom";
-import React from "react"; // Fix the import statement for React
 import { formatDate } from "../utils/dataUtils";
 import * as doctorService from "../serviceR/doctorService"
 import CreateDoctorModal from "./CreateDoctorModal"
@@ -8,12 +7,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from "../Components/style/dashboarddoctor.module.css"
 import * as bookingService from "../serviceR/bookingService"
-import { useContext } from "react";
 import AuthContext from '../Context/authContext';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
-
 import moment from 'moment-timezone';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+
 
 
 export default function DashboardDoctor() {
@@ -23,8 +21,6 @@ export default function DashboardDoctor() {
   const [user, setUser] = useState([]);
   const [booking, setBooking] = useState([])
   const [showCreate, setShowCreate] = useState(false);
-
-
 
 //fechwam booking zaqwkata
   useEffect(() => {
@@ -73,6 +69,7 @@ const doctorCreateHandler = async (e) => {
     createdAt,
     imageUrl,
 } = useContext(AuthContext);
+
 
 
 
