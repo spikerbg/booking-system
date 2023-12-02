@@ -13,7 +13,6 @@ import moment from 'moment-timezone';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 
-
 export default function DashboardDoctor() {
   const { id } = useParams();
   const localizer = momentLocalizer(moment);
@@ -21,7 +20,6 @@ export default function DashboardDoctor() {
   const [user, setUser] = useState([]);
   const [booking, setBooking] = useState([])
   const [showCreate, setShowCreate] = useState(false);
-
 //fechwam booking zaqwkata
   useEffect(() => {
 
@@ -119,20 +117,23 @@ const doctorCreateHandler = async (e) => {
         <div className={styles['home-container6']}>
           <h2>Booking</h2>
           {booking.length > 0 ? (
-            <Calendar
-            localizer={localizer}
-            events={booking.map(data => {
-              const startDate = new Date(data.selectedDates[0]);
-              const endDate = data.selectedDates[1] ? new Date(data.selectedDates[1]) : startDate; 
-              // console.log("Event:", { title: `Doctor ${data.doctorId}`, start: startDate, end: endDate });
-              return {
-                title: `Doctor ${data.doctorId}`,
-                start: startDate,
-                end: endDate,
-              };
-            })}
-            style={{ height: 500 }}
-          />
+  <Calendar
+    localizer={localizer}
+    events={booking
+      .filter(data => data.ownerId === userId) // Filter bookings based on ownerId
+      .map(data => {
+        const startDate = new Date(data.selectedDates[0]);
+        const endDate = data.selectedDates[1] ? new Date(data.selectedDates[1]) : startDate; 
+        // console.log("Event:", { title: `Doctor ${data.doctorId}`, start: startDate, end: endDate });
+        return {
+          title: `Reservate`,
+          start: startDate,
+          end: endDate,
+          ownerId: data.ownerId,
+        };
+      })}
+    style={{ height: 500 }}
+  />
 ) : (
   <p>No events to display</p>
 )}
