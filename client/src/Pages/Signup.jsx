@@ -14,33 +14,6 @@ import useForm from "../Hooks/useForm";
 
 const Signup = () => {
   
-  //   const [users, setUsers] = useState([])
-  //   const navigate = useNavigate()
-  //   const [newName, setNewName] = useState("");
-  //   const [newEmail, setNewEmail] = useState("");
-  //   const [newPassword, setNewPassword] = useState("");
-  //   const [newRole, setNewRole] = useState("patient");
-  //   const [newGender, setNewGender] = useState("");
-  //   const [about, setAbout] = useState("");
-  //   const [education, setEducation] = useState("");
-
-
-  // const userCreateHandler = async (e) => {
-  //   // Stop page from refreshing
-  //   e.preventDefault();
-  //   if (newPassword.length < 4 || newPassword.length > 10) {
-  //     alert("Password must be between 4 and 10 characters");
-  //     return;
-  //   }
-  //   // Get data from form data
-  //   const data = Object.fromEntries(new FormData(e.currentTarget));
-
-  //   // Create new user at the server
-  //   const newUser = await userService.create(data);
-  //   setTimeout(() => {navigate("/login");}, 5000)
-
-  //   // Add newly created user to the local state
-  //   setUsers(state => [...state, newUser]);
     
   
   
@@ -102,36 +75,45 @@ const Signup = () => {
                   placeholder="Full Name"
                   id="fullname"
                   name="fullname"
-                  className="w-full py-4 border-b border-solid border-[#006ff61] focus:outline-none focus:border-b-primaryColor text-[22px] leading-7 text-headingColor placeholder:text-textColor rounded-md cursor-pointer"
+                  className="w-full py-4 peer border-b border-solid border-[#006ff61] focus:outline-none focus:border-b-primaryColor text-[22px] leading-7 text-headingColor placeholder:text-textColor rounded-md cursor-pointer"
                   value={values.fullname}
                   onChange={onChange}
                   minLength="6"
                   required
                 />
+                <span class="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+    Please enter a valid fullname address
+  </span>
               </div>
               <div className="mb-5">
                 <input
                   type="email"
                   placeholder="Enter Your Email"
                   name="email"
-                  className="w-full py-4 border-b border-solid border-[#006ff61] focus:outline-none focus:border-b-primaryColor text-[22px] leading-7 text-headingColor placeholder:text-textColor rounded-md cursor-pointer"
+                  className="w-full py-4 peer border-b border-solid border-[#006ff61] focus:outline-none focus:border-b-primaryColor text-[22px] leading-7 text-headingColor placeholder:text-textColor rounded-md cursor-pointer "
                   value={values.email}
                   onChange={onChange}
                   pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
                   required
                 />
+                <span class="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+    Please enter a valid email address
+  </span>
               </div>
               <div className="mb-5">
                 <input
                   type="password"
                   placeholder="Password"
                   name="password"
-                  className="w-full py-4 border-b border-solid border-[#006ff61] focus:outline-none focus:border-b-primaryColor text-[22px] leading-7 text-headingColor placeholder:text-textColor rounded-md cursor-pointer"
+                  className="w-full py-4 peer border-b border-solid border-[#006ff61] focus:outline-none focus:border-b-primaryColor text-[22px] leading-7 text-headingColor placeholder:text-textColor rounded-md cursor-pointer"
                   value={values.password}
                   onChange={onChange}
                   minLength="4"
                   required
                 />
+                <span class="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+    Your password need be min 4 characters
+  </span>
                 
               </div>
               <div className="mb-5 flex items-center justify-between">

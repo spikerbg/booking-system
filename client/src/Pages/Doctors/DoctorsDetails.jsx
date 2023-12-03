@@ -61,7 +61,7 @@ const deleteUserHandler = async () => {
 };
 const contextValue = {
   doctorId: id,
-  ownerId: doctor._ownerId,
+  ownerId: doctor?. _ownerId || 'defaultOwnerId',
   userId: userId,
 };
   
