@@ -50,7 +50,7 @@ const Signup = () => {
     email: '',
     password: '',
     fullname: '',
-    role: '',
+    role: 'patient',
     gender: '',
     imageUrl: '',
   });
@@ -147,7 +147,6 @@ const Signup = () => {
                     value={values.role}
                     onChange={onChange}
                   >
-                    
                     <option value="patient">Patient</option>
                     <option value="doctor">Doctor</option>
                   </select>
