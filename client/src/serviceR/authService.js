@@ -35,7 +35,6 @@ export const register = async (email, password, fullname, role, gender, imageUrl
 
   export const getOne = async (userId) =>{
     const result = await request.get(`${baseUrl}${userId}`)
-    console.log(userId, "dsadsadsa"); // Add this line
     return result
 }
 
