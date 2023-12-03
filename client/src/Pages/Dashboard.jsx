@@ -55,6 +55,7 @@ useEffect(() => {
     gender,
     imageUrl,
     createdAt,
+    userId,
 } = useContext(AuthContext);
 
 
@@ -103,16 +104,17 @@ useEffect(() => {
           {booking.length > 0 ? (
             <Calendar
             localizer={localizer}
-            events={booking.map(data => {
-              const startDate = new Date(data.selectedDates[0]);
-              const endDate = data.selectedDates[1] ? new Date(data.selectedDates[1]) : startDate; 
-              // console.log("Event:", { title: `Doctor ${data.doctorId}`, start: startDate, end: endDate });
-              return {
-                title: `Doctor ${data.doctorId}`,
-                start: startDate,
-                end: endDate,
-              };
-            })}
+            events={booking
+              .filter(data => data.userId === userId) // Replace 1 with the client's actual ID
+              .map(data => {
+                const startDate = new Date(data.selectedDates[0]);
+                const endDate = data.selectedDates[1] ? new Date(data.selectedDates[1]) : startDate;
+                return {
+                  title: `Reservate`,
+                  start: startDate,
+                  end: endDate,
+                };
+              })}
             style={{ height: 500 }}
           />
 ) : (

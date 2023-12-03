@@ -17,7 +17,7 @@ const reserved = [
 
 const SidePanel = () => {
 
-  const {doctorId, ownerId }= useContext(BookContext);
+  const {doctorId, ownerId, userId }= useContext(BookContext);
   const { isAuthenticated } = useContext(AuthContext);
     const [selectedDates, setSelectedDates] = useState([]);
     const handleChange = async (e) => {
@@ -34,6 +34,7 @@ const SidePanel = () => {
         selectedDates: e,
         doctorId,
         ownerId,
+        userId,
       };
     
 

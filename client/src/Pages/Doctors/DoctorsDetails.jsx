@@ -61,7 +61,8 @@ const deleteUserHandler = async () => {
 };
 const contextValue = {
   doctorId: id,
-  ownerId: doctor._ownerId
+  ownerId: doctor._ownerId,
+  userId: userId,
 };
   
 
@@ -113,7 +114,7 @@ const contextValue = {
                   tab === "about" && `border-b border-solid border-primaryColor`
                 } py-2 px-5 mr-5 text-[16px] leading-7 text-headingColor font-semibold`}
               >
-                About 
+                About
               </button>
               <button
                 onClick={() => setTab("feedback")}
