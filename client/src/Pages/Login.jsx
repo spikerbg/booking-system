@@ -55,9 +55,13 @@ const Login = () => {
               name={LoginFormKyes.Email}
               onChange={onChange}
               value={values[LoginFormKyes.Email]}
-              className="w-full  py-4 border-b border-solid  border-[#006ff61] focus:outline-none focus:border-b-primaryColor text-[22px] leading-7 text-headingColor placeholder:text-textColor rounded-md cursor-pointer"
+              pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+              className="w-full peer py-4 border-b border-solid  border-[#006ff61] focus:outline-none focus:border-b-primaryColor text-[22px] leading-7 text-headingColor placeholder:text-textColor rounded-md cursor-pointer"
               required
             />
+            <span class="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+    Please enter a valid email address
+  </span>
           </div>
           <div className="mb-5">
             <input
@@ -66,9 +70,13 @@ const Login = () => {
               name={LoginFormKyes.Password}
               onChange={onChange}
               value={values[LoginFormKyes.Password]}
-              className="w-full py-4 border-b border-solid  border-[#006ff61] focus:outline-none focus:border-b-primaryColor text-[22px] leading-7 text-headingColor placeholder:text-textColor rounded-md cursor-pointer"
+              className="w-full py-4 peer border-b border-solid  border-[#006ff61] focus:outline-none focus:border-b-primaryColor text-[22px] leading-7 text-headingColor placeholder:text-textColor rounded-md cursor-pointer"
               required
+              minLength="4"
             />
+            <span class="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+    Your password need be min 4 characters
+  </span>
           </div>
           <div className="mt-7">
             <button

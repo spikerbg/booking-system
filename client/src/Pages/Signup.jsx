@@ -7,16 +7,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import styles from '../Components/style/Signup.module.css'
 import { useContext, useState} from "react";
 import AuthContext from "../Context/authContext";
-import useForm from "../Hooks/useForm";
 // import 'react-toastify/dist/ReactToastify.css';
 
 
 
 const Signup = () => {
-  
-    
-  
-  
     
   const { registerSubmitHandler } = useContext(AuthContext);
   const [values, setValues] = useState({
@@ -82,7 +77,7 @@ const Signup = () => {
                   required
                 />
                 <span class="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
-    Please enter a valid fullname address
+    Please enter a valid full name address
   </span>
               </div>
               <div className="mb-5">

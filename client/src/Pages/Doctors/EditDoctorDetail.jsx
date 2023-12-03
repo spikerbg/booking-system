@@ -1,7 +1,7 @@
 import styles from "../../Components/style/editdoctordetails.module.css"
 import { useNavigate, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-
+import {toast, ToastContainer } from 'react-toastify';
 import * as doctorService from '../../serviceR/doctorService';
 import { useEffect, useState} from 'react';
 export default function EditDoctorModal(){
@@ -35,11 +35,15 @@ export default function EditDoctorModal(){
 
         try {
             await doctorService.edit(id, values);
+            toast.success('Edit Doctor successfully!', {
+                position: toast.POSITION.TOP_RIGHT,
+              })
 
-            navigate('/doctors');
-        } catch (err) {
-            // Error notification
-            console.log(err);
+              setTimeout(() => {navigate("/doctors");}, 2900)
+        } catch {
+            toast.error('Edit Doctor failed. Please try again.', {
+                position: toast.POSITION.TOP_RIGHT,
+              });
         }
     }
 
@@ -107,6 +111,7 @@ export default function EditDoctorModal(){
                             </Link>
                         </div>
                     </form>
+                    <ToastContainer />
                     </div>
     )
 }

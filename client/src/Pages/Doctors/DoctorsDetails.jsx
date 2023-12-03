@@ -9,6 +9,7 @@ import { BookContext } from '../../Context/BookContext';
 import styles from '../../Components/style/doctordetails.module.css'
 import AuthContext from "../../Context/authContext";
 import DeleteDoctor from "./DeleteDoctor";
+import {toast, ToastContainer } from 'react-toastify';
 
 const DoctorsDetails = ({}) => {
   const [doctor, setDoctor] = useState(null);
@@ -54,10 +55,15 @@ const DoctorsDetails = ({}) => {
 const deleteUserHandler = async () => {
   try {
     await doctorService.remove(id);
-  } catch (error) {
-    console.error("Error deleting user:", error);
+    toast.success('Delete Doctor successfully!', {
+      position: toast.POSITION.TOP_RIGHT,
+    })
+    setTimeout(() => {navigate("/doctors");}, 1800)
+  } catch {
+    toast.error('Delete Doctor failed. Please try again.', {
+      position: toast.POSITION.TOP_RIGHT,
+    });
   }
-  navigate('/')
 };
 const contextValue = {
   doctorId: id,
@@ -140,6 +146,7 @@ const contextValue = {
           <SidePanel />
           </BookContext.Provider>
         </div>
+        <ToastContainer />
       </div>
     </section>
   );
