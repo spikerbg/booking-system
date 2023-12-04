@@ -40,7 +40,7 @@
       
       .btncencel:hover,
       .btncencel:focus {
-        background-color: #1D4ED8; /* Equivalent to hover:bg-blue-800 */
-        box-shadow: 0 0 0 0.25rem #60a5fa; /* Equivalent to focus:ring-4 and focus:ring-blue-300 */
+        background-color: #1D4ED8; 
+        box-shadow: 0 0 0 0.25rem #60a5fa; 
       }
 

@@ -1,3 +1,4 @@
+import styles from "../Components/style/createuser.module.css"
 import { useState } from "react";
 const formInitialState = {
     gender: '',
@@ -65,8 +66,8 @@ const CreateUserModal = ({
                         </select>
                     </div>
                         <div id="form-actions">
-                            <button id="action-save" className="px-5 py-2.5 text-sm my-10 mr-2 font-medium text-white bg-green-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="submit">Save</button>
-                            <button id="action-cancel" className="px-5 py-2.5 text-sm my-10 mr-2 font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" onClick={onClose}>
+                            <button id="action-save" className={styles['btnsave']} type="submit">Save</button>
+                            <button id="action-cancel" className={styles['btncencel']} type="button" onClick={onClose}>
                                 Cancel
                             </button>
                         </div>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AiFillStar } from "react-icons/ai";
+import styles from "../../Components/style/feedbackform.module.css"
 
 
 const FeedBackForm = ({ doctor, onSubmit  }) => {
@@ -56,7 +57,7 @@ const FeedBackForm = ({ doctor, onSubmit  }) => {
       <input type="hidden" name="id" value={id} />
 <input type="hidden" name="doctorId" value={doctor.id} />
 <input type="hidden" name="rating" value={rating} />
-      <h3 className="text-headingColor text-[16px] leading-6 font-semibold mb-4">
+      <h3 className={styles['header']}>
           User Name
         </h3>
     <input type="text" placeholder="UserName" id="username" name="username" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
@@ -66,7 +67,7 @@ const FeedBackForm = ({ doctor, onSubmit  }) => {
 </div>
 
       <div className="mt-[30px]">
-        <h3 className="text-headingColor text-[16px] leading-6 font-semibold mb-4">
+        <h3 className={styles['header']}>
           Share your feedback or suggestion*
         </h3>
         <textarea

@@ -1,10 +1,9 @@
 
-import React from "react"; //
+import React from "react"; 
 
 import { formatDate } from "../utils/dataUtils";
-import { AiFillEdit, AiFillDelete, AiFillInfoCircle } from "react-icons/ai";
-import AuthContext from "../Context/authContext";
-import { useContext } from "react";
+import {AiFillDelete } from "react-icons/ai";
+
 
 
 
