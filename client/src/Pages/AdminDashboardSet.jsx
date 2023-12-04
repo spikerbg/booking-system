@@ -1,24 +1,21 @@
-// import { doc, getDoc } from "firebase/firestore";
-import { useState, useEffect } from "react";
-import React from "react"; // Fix the import statement for React
-// import { db } from '../firebase';
 
-import * as authUsers from "../serviceR/authUsers";
+import { useState, useEffect } from "react";
+import React from "react"; 
+
 import * as userService from "../serviceR/userService";
-import * as authService from "../serviceR/authService";
 import AdminDashboard from "./AdminDashboard";
 import CreateUserModal from "./CreateUserModal";
 import UserDeleteModal from "./UserDeleteModal";
 import { ToastContainer,toast } from 'react-toastify';
 import styles from "../Components/style/admindash.module.css"
 import 'react-toastify/dist/ReactToastify.css';
-import { useContext } from "react";
-import AuthContext from "../Context/authContext";
+
+
 export default function AdminDashboardSet(){
     const [users, setUsers] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [showCreate, setShowCreate] = useState(false);
-    const [showInfo, setShowInfo] = useState(false);
+    const [showEdit, setShowEdit] = useState(false);
     const [showDelete, setShowDelete] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
  
@@ -68,10 +65,11 @@ export default function AdminDashboardSet(){
           position: toast.POSITION.TOP_RIGHT,
         })
     };
+     
 
-    const userInfoClickHandler = async (userId) => {
+    const userEditClickHandler = async (userId) => {
         setSelectedUser(userId);
-        setShowInfo(true);
+        setShowEdit(true);
     };
 
     const deleteUserClickHandler = (userId) => {
@@ -103,12 +101,13 @@ export default function AdminDashboardSet(){
                 />
             )}
 
-            {showInfo && (
-                <UserInfoModal
-                    onClose={() => setShowInfo(false)}
+            {/* {showEdit && (
+                <EditUserModal
+                    onClose={() => setShowEdit(false)}
+                    onEdit={userEditHandler}
                     userId={selectedUser}
                 />
-            )}
+            )} */}
 
             {showDelete && (
                 <UserDeleteModal
@@ -125,13 +124,7 @@ export default function AdminDashboardSet(){
                 </svg>Users
             </a>
         </li>
-        <li className="me-2">
-            <a href="#" className="inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group" aria-current="page">
-                <svg className="w-4 h-4 me-2 text-gray-400 dark:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
-                    <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
-                </svg>Doctors
-            </a>
-        </li>
+
     </ul>
 </div>
         <div className="sm:flex sm:items-center">
@@ -200,7 +193,7 @@ export default function AdminDashboardSet(){
                             imageUrl={user.imageUrl}
                             gender={user.gender}
                             password={user.password}
-                            onInfoClick={userInfoClickHandler}
+                            onEditClick={userEditClickHandler}
                             onDeleteClick={deleteUserClickHandler}
                             
                         />

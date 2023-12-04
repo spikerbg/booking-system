@@ -1,5 +1,6 @@
 const baseUrl = 'http://localhost:3030/jsonstore/users';
 
+
 export const getAll = async () => {
     const response = await fetch(baseUrl);
     const result = await response.json();
@@ -51,4 +52,28 @@ export const remove = async (userId) => {
     const result = await response.json();
 
     return result;
+};
+
+export const edit = async (userId, data) => {
+    const url = `${baseUrl}/${userId}`;
+
+    try {
+        const response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (!response.ok) {
+            throw new Error(`Failed to edit user. Status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        return result; 
+    } catch (error) {
+        console.error('Error editing user:', error);
+        throw error; 
+    }
 };

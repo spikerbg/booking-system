@@ -1,6 +1,5 @@
 
 
-
 const DeleteDoctor = ({
     onClose,
     onDelete,

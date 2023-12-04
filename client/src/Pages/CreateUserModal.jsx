@@ -50,7 +50,7 @@ const CreateUserModal = ({
 
                     <div>
                         <label htmlFor="role" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">role</label>
-                        <select id="role" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="patient/doctor">
+                        <select id="role" name="role" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="patient/doctor">
                         <option value="patient">Patient</option>
                         <option value="doctor">Doctor</option>
                         </select>
@@ -59,7 +59,7 @@ const CreateUserModal = ({
 
                     <div>
                     <label htmlFor="gender" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">gender</label>
-                        <select id="gender" onChange={changeHandler} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Male/Female">
+                        <select id="gender" name="gender" onChange={changeHandler} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Male/Female">
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                         </select>

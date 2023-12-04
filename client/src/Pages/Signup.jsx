@@ -76,7 +76,7 @@ const Signup = () => {
                   minLength="6"
                   required
                 />
-                <span class="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                <span className="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
     Please enter a valid full name address
   </span>
               </div>
@@ -91,7 +91,7 @@ const Signup = () => {
                   pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
                   required
                 />
-                <span class="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                <span className="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
     Please enter a valid email address
   </span>
               </div>
@@ -106,7 +106,7 @@ const Signup = () => {
                   minLength="4"
                   required
                 />
-                <span class="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
+                <span className="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
     Your password need be min 4 characters
   </span>
                 
