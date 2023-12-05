@@ -19,6 +19,11 @@ const DoctorsDetails = ({}) => {
   const [showDelete, setShowDelete] = useState(false);
   const navigate = useNavigate();
 
+  const {
+    isAuthenticated,
+  } = useContext(AuthContext);
+  
+
   useEffect(() => {
     async function fetchDoctor() {
       try {
@@ -44,10 +49,7 @@ const DoctorsDetails = ({}) => {
     photo,
     short,
   } = doctor;
-  const {
-    isAuthenticated,
-  } = useContext(AuthContext);
-  
+
   const deleteUserClickHandler = (id) => {
     setDoctor(id);
     setShowDelete(true);

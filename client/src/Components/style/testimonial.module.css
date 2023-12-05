@@ -1,0 +1,13 @@
+.maindiv{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 13px;
+}
+
+.seconddiv{
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}

@@ -1,5 +1,6 @@
 import { services } from "../../data/services.js";
 import ServicesCard from "./ServicesCard.jsx";
+import styles from "../Components/style/serviceslist.module.css"
 const ServicesList = () => {
   return (
     <div className="bg-white py-24 sm:py-32">
@@ -18,7 +19,7 @@ const ServicesList = () => {
             {services.map((services) => (
               <div key={services.name} className="relative pl-16">
                 <dt className="text-lg font-semibold leading-7 text-gray-900">
-                  <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-white">
+                  <div className={styles['div']}>
                   <img className="w-full" src={services.icon} alt="" />
                   </div>
                   {services.name}

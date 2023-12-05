@@ -12,7 +12,7 @@ import ServicesList from "../Services/ServicesList";
 import featureImg from "../assets/images/feature-img.png";
 import videoIcon from "../assets/images/video-icon.png";
 import avatarIcon from "../assets/images/avatar-icon.png";
-import faqImg from "../assets/images/shot-doctor-writing.jpg";
+import faqImg from "../assets/images/shot-doctor-writing.png";
 import DoctorsList from "./Doctors/DoctorsList";
 import FaqItem from "./Faq/FaqItem";
 import Testimonial from "../Components/Testimonial/Testimonial";
@@ -171,7 +171,7 @@ const Home = () => {
       </section>
 
       {/* Feature Content */}
-      <section className="bgcolr">
+      <section className={styles['bgcolr']}>
         <div className="container">
           <div className="flex items-center justify-between flex-col lg:flex-row">
             <div className="xl:w-[680px]">
@@ -244,7 +244,7 @@ const Home = () => {
 
       {/* FAQ SECTION */}
 
-      <section>
+      <section className={styles['bgcolrsecond']}>
         <div className="container">
           <div className="flex justify-between gap-[50px] lg:gap-0">
             <div className="w-1/2 hidden md:block">

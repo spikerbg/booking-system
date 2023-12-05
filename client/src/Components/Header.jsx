@@ -1,7 +1,7 @@
 import logo from "../../src/assets/images/logo.png";
 import { Link, NavLink } from "react-router-dom";
-import { BiMenu } from "react-icons/bi";
 import { useRef, useContext } from "react";
+import styles from "../Components/style/header.module.css"
 import AuthContext from '../Context/authContext';
 const navLinks = [
   {
@@ -26,9 +26,7 @@ const navLinks = [
 const Header = () => {
   const menuRef = useRef(null);
   const {
-    email,
     role,
-    gender,
     fullname,
     imageUrl,
     isAuthenticated,
@@ -43,7 +41,7 @@ const Header = () => {
           {/*  Logo  */}
           <div>
             <Link to="/">
-              <img src={logo} alt="Logo" className="max-w-xs" />
+              <img src={logo} alt="Logo" className={styles['logo']} />
             </Link>
           </div>
 

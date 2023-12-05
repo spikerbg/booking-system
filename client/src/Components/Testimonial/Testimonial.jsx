@@ -4,10 +4,11 @@ import "swiper/css";
 import "swiper/css/pagination";
 import patientAvatar from "../../assets/images/patient-avatar.png";
 import { HiStar } from "react-icons/hi";
+import styles from "../../Components/style/testimonial.module.css"
 const Testimonial = () => {
   return (
     <div className="mt-[30px] lg:mt-[55px]">
-      <Swiper
+      <Swiper className="pt-10"
         modules={[Pagination]}
         spaceBetween={30}
         slidesPerView={1}
@@ -28,8 +29,8 @@ const Testimonial = () => {
         }}
       >
         <SwiperSlide>
-          <div className="py-[30px] px-5 rounded-[13px]">
-            <div className="flex items-center gap-[13px]">
+          <div className={styles['maindiv']}>
+            <div className={styles['seconddiv']}>
               <img src={patientAvatar} alt="" />
               <div>
                 <h4 className="text-[18px] leading-[30px] font-semibold text-headingColor">
@@ -50,8 +51,8 @@ const Testimonial = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="py-[30px] px-5 rounded-[13px]">
-            <div className="flex items-center gap-[13px]">
+          <div className={styles['maindiv']}>
+            <div className={styles['seconddiv']}>
               <img src={patientAvatar} alt="" />
               <div>
                 <h4 className="text-[18px] leading-[30px] font-semibold text-headingColor">
@@ -72,8 +73,8 @@ const Testimonial = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="py-[30px] px-5 rounded-[13px]">
-            <div className="flex items-center gap-[13px]">
+          <div className={styles['maindiv']}>
+            <div className={styles['seconddiv']}>
               <img src={patientAvatar} alt="" />
               <div>
                 <h4 className="text-[18px] leading-[30px] font-semibold text-headingColor">
@@ -94,8 +95,8 @@ const Testimonial = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="py-[30px] px-5 rounded-[13px]">
-            <div className="flex items-center gap-[13px]">
+          <div className={styles['maindiv']}>
+            <div className={styles['seconddiv']}>
               <img src={patientAvatar} alt="" />
               <div>
                 <h4 className="text-[18px] leading-[30px] font-semibold text-headingColor">
@@ -116,8 +117,8 @@ const Testimonial = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="py-[30px] px-5 rounded-[13px]">
-            <div className="flex items-center gap-[13px]">
+          <div className={styles['maindiv']}>
+            <div className={styles['seconddiv']}>
               <img src={patientAvatar} alt="" />
               <div>
                 <h4 className="text-[18px] leading-[30px] font-semibold text-headingColor">

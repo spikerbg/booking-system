@@ -1,3 +1,4 @@
+import styles from "../Components/style/servicescard.module.css"
 /* eslint-disable react/prop-types */
 import { BsArrowRight } from "react-icons/bs";
 import { Link } from "react-router-dom";
@@ -11,7 +12,7 @@ const ServicesCard = ({ item }) => {
         {name}
       </h2>
       <p className="text-[16px] leading-7 font-[400] text-textColor">{desc}</p>
-      <div className="flex items-center justify-between mt-[30px]">
+      <div className={styles['div']}>
         <Link
           to="/doctors"
           className="w-[44px] h-[44px] rounded-full border border-solid border-[#181A1E] mt-[30px] mx-auto flex items-center justify-center group hover:bg-primaryColor hover:border-none "

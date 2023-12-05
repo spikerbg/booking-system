@@ -2,7 +2,7 @@
 import logo from "../assets/images/logo.png";
 import { Link } from "react-router-dom";
 import { RiLinkedinFill, RiFacebookCircleFill, RiGithubFill, RiInstagramLine } from "react-icons/ri";
-import style from "../style.css";
+import styles from "../Components/style/footer.module.css"
 
 const sociallinks = [
   {
@@ -76,7 +76,7 @@ const Footer = () => {
       <div className="container">
         <div className="flex justify-between flex-col md:flex-row flex-wrap gap-[30px]">
           <div>
-            <img src={logo} className="logo" alt="MedRent" />
+            <img src={logo} className={styles['logo']} alt="MedRent" />
             <p className="text-[16px] leading-7 font-[400]">
               Copyright ©️ {year} developed by Valentin Nedev. All right
               reserved
