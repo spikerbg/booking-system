@@ -77,7 +77,7 @@ const Signup = () => {
                   required
                 />
                 <span className="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
-    Please enter a valid full name address
+    Please enter a valid full name
   </span>
               </div>
               <div className="mb-5">

@@ -72,14 +72,14 @@ useEffect(() => {
         <h1>{role}</h1>
           <h1>{fullname}</h1>
         </div>
-        <div className={styles['home-container3']}>
+        {/* <div className={styles['home-container3']}>
           <button type="button" className={styles['btndb']}>
             Delete profile
           </button>
           <button type="button" className={styles['btndbred']}>
             Edit profile
           </button>
-        </div>
+        </div> */}
       </div>
       <div className={styles['home-container4']}>
         <div className={styles['home-container5']}>
@@ -100,7 +100,7 @@ useEffect(() => {
 
         </div>
         <div className={styles['home-container6']}>
-          <h2>Booking</h2>
+          <h2>Your Booking</h2>
           {booking.length > 0 ? (
             <Calendar
             localizer={localizer}
