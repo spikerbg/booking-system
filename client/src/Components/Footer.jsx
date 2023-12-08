@@ -33,7 +33,7 @@ const quickLinks01 = [
     display: "Services",
   },
   {
-    path: "/about-us",
+    path: "/",
     display: "About-us",
   },
 
