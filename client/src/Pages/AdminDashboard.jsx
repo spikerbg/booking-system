@@ -7,7 +7,7 @@ import {AiFillDelete } from "react-icons/ai";
 
 
 
-
+//wzimam dannite ot props
 export default function AdminDashboard({
   userId,
     fullname,
@@ -22,7 +22,7 @@ export default function AdminDashboard({
   
    
 
-
+//otnovo ne raboti zaradi softuni practis survura
   const editClickHandler = () => {
     onEditClick(userId);
 };

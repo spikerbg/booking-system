@@ -19,7 +19,7 @@ export default function AdminDashboardSet(){
     const [showDelete, setShowDelete] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
  
-
+//fechvam vsicki potrebiteli
     const fetchData = async () => {
       try {
         setIsLoading(true);
@@ -34,7 +34,7 @@ export default function AdminDashboardSet(){
   
     useEffect(() => {
       fetchData();
-    }, []); // Empty dependency array to run only once on mount
+    }, []); // zarejda se ako masiva e prazen samo edin put
     
   
 
@@ -107,7 +107,7 @@ export default function AdminDashboardSet(){
                     onEdit={userEditHandler}
                     userId={selectedUser}
                 />
-            )} */}
+            )} izkluchih go zashtoto softuni praktis survure ne pozvolqwa CRUD zaqwki kum protected data*/}
 
             {showDelete && (
                 <UserDeleteModal

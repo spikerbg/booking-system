@@ -17,7 +17,7 @@ export default function EditUserDoctor(){
 
     })
 
-
+//fechvam potrebitelq
     useEffect(() =>{
         userService.getOne(id)
         .then(result =>{
@@ -26,6 +26,7 @@ export default function EditUserDoctor(){
         })
     },[id])
 
+    //editvam potrebitelq kato izpolzvam negowite danni
     const editUserDoctorHandler = async (e) =>{
         e.preventDefault()
         const values = Object.fromEntries(new FormData(e.currentTarget));

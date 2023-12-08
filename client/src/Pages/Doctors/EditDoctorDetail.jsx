@@ -19,7 +19,7 @@ export default function EditDoctorModal(){
         short: '',
         about: '',
     });
-
+//izvikvam doktora po id
     useEffect(() => {
         doctorService.getOne(id)
             .then(result => {
@@ -28,7 +28,7 @@ export default function EditDoctorModal(){
             
     }, [id]);
 
-
+//promenqm values ot doktora
     const editDoctorHandler = async (e) =>{
         e.preventDefault()
         const values = Object.fromEntries(new FormData(e.currentTarget));

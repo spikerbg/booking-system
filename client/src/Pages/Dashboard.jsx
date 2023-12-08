@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import React from "react"; // Fix the import statement for React
-
+import { FaUserGear, FaUser } from "react-icons/fa6";
 import styles from "../Components/style/dashboard.module.css"
 import { useContext } from "react";
 import AuthContext from '../Context/authContext';
@@ -24,7 +24,7 @@ export default function Dashboard({}) {
   const [user, setUser] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
   const [booking, setBooking] = useState([])
-  
+  //fechvam lekarq po id
   useEffect(() => {
     async function fetchUser() {
       try {
@@ -47,7 +47,7 @@ useEffect(() => {
       .catch(err => console.log(err))
 }, []);
 
-
+//izpolzvam useContext za da dostupq ot do userdata
   const {
     email,
     fullname,
@@ -69,8 +69,13 @@ useEffect(() => {
           className="home-image"
         />
         <div className={styles['home-container2']}>
-        <h1>{role}</h1>
-          <h1>{fullname}</h1>
+        <h1 className={styles['iconflex']}>
+        <FaUserGear className={styles['iconcolor']} />
+        {role}</h1>
+
+          <h1 className={styles['iconflex']}>
+          <FaUser className={styles['iconcolor']} />
+            {fullname}</h1>
         </div>
         {/* <div className={styles['home-container3']}>
           <button type="button" className={styles['btndb']}>
@@ -105,7 +110,7 @@ useEffect(() => {
             <Calendar
             localizer={localizer}
             events={booking
-              .filter(data => data.userId === userId) // Replace 1 with the client's actual ID
+              .filter(data => data.userId === userId) 
               .map(data => {
                 const startDate = new Date(data.selectedDates[0]);
                 const endDate = data.selectedDates[1] ? new Date(data.selectedDates[1]) : startDate;

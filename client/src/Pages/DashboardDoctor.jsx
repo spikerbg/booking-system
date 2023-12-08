@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams,  } from "react-router-dom";
+import { FaUserGear, FaUser } from "react-icons/fa6";
 import { formatDate } from "../utils/dataUtils";
 import * as doctorService from "../serviceR/doctorService";
 import CreateDoctorModal from "./CreateDoctorModal";
@@ -72,8 +73,15 @@ export default function DashboardDoctor() {
           alt="image"
           className="home-image" />
         <div className={styles['home-container2']}>
-          <h1>{role}</h1>
-          <h1>{fullname}</h1>
+        <div className={styles['home-container2']}>
+        <h1 className={styles['iconflex']}>
+        <FaUserGear className={styles['iconcolor']} />
+        {role}</h1>
+
+          <h1 className={styles['iconflex']}>
+          <FaUser className={styles['iconcolor']} />
+            {fullname}</h1>
+        </div>
         </div>
         <div className={styles['home-container3']}>
           {/* <button type="button" className="block rounded-md mr-2 bg-red-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">

@@ -18,12 +18,12 @@ const DoctorsDetails = ({}) => {
   const { userId } = useContext(AuthContext);
   const [showDelete, setShowDelete] = useState(false);
   const navigate = useNavigate();
-
+//pravq proverka dali ima authenticated, izpolzvam go za da razbera dali ima lognat potrebitel da napravi booking ili da editne profila
   const {
     isAuthenticated,
   } = useContext(AuthContext);
   
-
+// izvikvam daden doctor po ID
   useEffect(() => {
     async function fetchDoctor() {
       try {
