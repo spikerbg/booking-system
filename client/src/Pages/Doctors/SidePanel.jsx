@@ -3,6 +3,7 @@ import Calendar from "@demark-pro/react-booking-calendar";
 import { BookContext} from "../../Context/BookContext"
 import styles from "../../Components/style/sidepanel.module.css"
 import AuthContext from "../../Context/authContext"
+import {toast, ToastContainer } from 'react-toastify';
 
 
 
@@ -28,7 +29,9 @@ const SidePanel = () => {
       }
   
       setSelectedDates(e);
-    
+      toast.success('Your booking is successfully!', {
+        position: toast.POSITION.TOP_RIGHT,
+      })
       // izprashtam dannite prez post zaqwka kum survura
       const data = {
         selectedDates: e,
@@ -115,6 +118,7 @@ const SidePanel = () => {
       range={false}
     />
       {/* <button className="btn w-full px-2 rounded-md">Book Appointment</button> */}
+      <ToastContainer />
     </div>
   );
 };
