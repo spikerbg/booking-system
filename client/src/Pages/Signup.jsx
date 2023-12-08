@@ -23,9 +23,7 @@ const Signup = () => {
     imageUrl: '',
   });
   const [formError, setFormError] = useState(false);
-  const notify = () => {
-    // Add your toast notification logic here
-  };
+  
 
   const onChange = (e) => {
     setValues((prevValues) => ({
@@ -37,14 +35,14 @@ const Signup = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // Perform your validation checks here
+    // vkarvam validaciq
     if (values.password.length < 4 || !values.email.includes('@') || values.email.split('@')[1].length < 3 || values.fullname.length < 6 ) {
-      // If validation fails, set formError to true
+      // ako validaciqta ne mine, sloji formError na true
       setFormError(true);
       return;
     }
 
-    // Assuming submitHandler is a function that should be called with values
+    // submithendlara trqbwa da bude izvikan sus stoinost
     registerSubmitHandler(values);
   }
 
@@ -77,7 +75,7 @@ const Signup = () => {
                   required
                 />
                 <span className="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]:block">
-    Please enter a valid full name
+    Please enter a valid full name min 6 characters
   </span>
               </div>
               <div className="mb-5">
@@ -167,7 +165,7 @@ const Signup = () => {
                 <button
                   type="submit"
                   className="w-full bg-primaryColor text-white text-[18px] leading-[30px] rounded-lg py-3"
-                  // onClick={notify}
+                  
                 >
                   Signup
                 </button>

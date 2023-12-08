@@ -157,4 +157,13 @@
     box-shadow: 0 0 0 4px #a0aEC0, 0 0 0 6px #2563eb; 
   }
   
+  .iconflex{
+    display: flex;
+    align-items: center;
+  }
+
+  .iconcolor{
+    margin-right: 5px;
+    color: #FF531F;
+  }
   

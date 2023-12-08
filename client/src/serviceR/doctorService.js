@@ -98,15 +98,7 @@ export const create = async (data) => {
     return result;
 };
 
-// export const remove = async (userId) => {
-//     const response = await fetch(`${baseUrl}/${userId}`, {
-//         method: 'DELETE'
-//     });
 
-//     const result = await response.json();
-
-//     return result;
-// };
 
 export const edit = async (doctorId, data) => {
     const result = await request.put(`${baseUrl}/${doctorId}`, data);
