@@ -66,6 +66,7 @@ Client side install and run
 - Patient:
 - Email: peter@abv.bg
 - Password: 123456
+* To look booking calendar log in admin@abv.bg whit password admin. Go to profile page, made a doctor after this logout, and log whit peter@abv.bg whit password 123456, after this go to find doctor, select new doctor who made in admin profile, and select booking date, after this can go to profile picture and calendar for patient will show. If wanna look calendar of doctor after when you make booking whit peter@abv.bg logout and login whit admin@abv.bg whit password admin.
 
 ## Tech Stack
 
