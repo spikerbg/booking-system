@@ -13,7 +13,7 @@ This project its made for SoftUni React Octomber 2023.
 
 ## Screenshots
 
-![App Screenshot](https://i.ibb.co/d74w3jc/sftini.png)
+![App Screenshot](https://i.ibb.co/KGSg4d8/sftini.png)
 
 
 ## How to install
